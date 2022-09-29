@@ -1,0 +1,140 @@
+[line_break]
+disabled = true
+
+[aws]
+
+symbol = "\ue33d  "
+
+
+
+[buf]
+
+symbol = "\uf49d "
+
+
+
+[c]
+
+symbol = "\ue61e "
+
+
+
+[conda]
+
+symbol = "\uf10c "
+
+
+
+[dart]
+
+symbol = "\ue798 "
+
+
+
+[directory]
+
+read_only = " \uf83d"
+
+
+
+[docker_context]
+
+symbol = "\uf308 "
+
+
+
+[elixir]
+
+symbol = "\ue275 "
+
+
+
+[elm]
+
+symbol = "\ue62c "
+
+
+
+[git_branch]
+
+symbol = "\uf418 "
+
+
+
+[golang]
+
+symbol = "\ue627 "
+
+
+
+[haskell]
+
+symbol = "\ue777 "
+
+
+
+[hg_branch]
+
+symbol = "\uf418 "
+
+
+
+[java]
+
+symbol = "\ue256 "
+
+
+
+[julia]
+
+symbol = "\ue624 "
+
+
+
+[memory_usage]
+
+symbol = "\uf85a "
+
+
+
+[nim]
+
+symbol = "\uf6a4 "
+
+
+
+[nix_shell]
+
+symbol = "\uf2dc "
+
+
+
+[nodejs]
+
+symbol = "\ue718 "
+
+
+
+[package]
+
+symbol = "\uf8d6 "
+
+
+
+[python]
+
+symbol = "\ue235 "
+
+
+
+[spack]
+
+symbol = "\U0001f162 "
+
+
+
+[rust]
+
+symbol = "\ue7a8 "
+
+
