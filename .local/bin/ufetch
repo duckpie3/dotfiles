@@ -63,21 +63,12 @@ if [ -x "$(command -v tput)" ]; then
 fi
 
 # you can change these
-lc="${reset}${bold}${blue}"         # labels
-nc="${reset}${bold}${green}"         # user and hostname
-ic="${reset}${magenta}"                       # info
-c0="${reset}${white}"                # first color
+lc="${reset}${bold}${blue}"        # labels
+nc="${reset}${bold}${green}"       # user and hostname
+ic="${reset}${magenta}"            # info
+c0="${reset}${white}"              # first color
 c1="${reset}${cyan}"
 
-## Default OUTPUT
-
-# ${c1}        /\\         ${nc}${USER}${ic}@${nc}${host}${reset}
-# ${c1}       /  \\        ${lc}OS:        ${ic}${os}${reset}
-# ${c1}      /\\   \\       ${lc}KERNEL:    ${ic}${kernel}${reset}
-# ${c0}     /  __  \\      ${lc}UPTIME:    ${ic}${uptime}${reset}
-# ${c0}    /  (  )  \\     ${lc}PACKAGES:  ${ic}${packages}${reset}
-# ${c0}   / __|  |__\\\\    ${lc}SHELL:     ${ic}${shell}${reset}
-# ${c0}  /.\`        \`.\\   ${lc}${uitype}:        ${ic}${ui}${reset}
 
 ## OUTPUT
 cat <<EOF
