@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "hsetroot ${1} $(readlink -f ${2})" > ~/.restore_bg
+chmod +x ~/.restore_bg
+~/.restore_bg

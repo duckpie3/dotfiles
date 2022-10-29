@@ -1,4 +1,5 @@
+xrandr -s 1920x1080
 xrdb ~/.Xresources &
-wal -R
-~/.fehbg &
-exec i3
+~/.restore_bg
+picom --no-vsync &
+exec bspwm
