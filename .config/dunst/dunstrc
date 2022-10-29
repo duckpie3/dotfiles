@@ -24,7 +24,7 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = 300
+    width = (0,300)
 
     # The maximum height of a single notification, excluding the frame.
     height = 300
@@ -104,7 +104,7 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = foreground
+    separator_color = "#24283b"
 
     # Sort messages by urgency.
     sort = yes
@@ -118,7 +118,7 @@
 
     ### Text ###
 
-    font = FantasqueSansMono Nerd Font 13
+    font = FantasqueSansMono Nerd Font 6
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -309,14 +309,14 @@
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#d5d6db"
-    foreground = "#343b58"
+    foreground = "#1a1b26"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_normal]
-    background = "#414868"
-    foreground = "#a9b1d6"
+    background = "#1f2335"
+    foreground = "#c0caf5"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon

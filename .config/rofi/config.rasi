@@ -151,6 +151,4 @@ configuration {
 }
 
 /* Dark theme. */
-@import "~/.cache/wal/colors-rofi-dark"
 @theme "./themes/simple_tokyonight.rasi"
-
