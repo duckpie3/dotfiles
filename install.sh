@@ -9,7 +9,7 @@ cd paru; makepkg -si;cd
 
 cp --parents -r .local/bin ~
 cp -r .config ~
-mkdir -p ~/Pictures/wallpapers
+mkdir -p ~/Media/Images/wallpapers
 cp wallpaper.png ~/Pictures/wallpapers/
 cp .xinitrc ~
 cp .zshrc ~
@@ -20,7 +20,7 @@ paru -S bspwm sxhkd alacritty rofi polybar ranger ueberzug \
 	zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting \
 	picom-ibhagwan-git ttf-material-design-icons-desktop-git \
 	nerd-fonts-fantasque-sans-mono firefox doas man htop \
-	xorg-xsetroot hsetroot dunst sxiv libnotify
+	xorg-xsetroot hsetroot dunst sxiv libnotify escrotum-git
 
 
 echo "permit ${USER} as root" | sudo tee /etc/doas.conf

@@ -13,6 +13,7 @@
   yellow  : #e0af68;
   blue    : #7aa2f7;
   magenta : #9a7ecc;
+  magenta2 : #bb9af7;
   cyan    : #4abaaf;
 
   accent: @blue;
@@ -53,7 +54,7 @@ inputbar {
 icon-search, entry, element-icon, element-text {
   vertical-align: 0.5;
   /*placeholder : "search";*/
-  text-color : @fg1; 
+  text-color : @fg0; 
 }
 
 icon-search {
@@ -62,9 +63,6 @@ icon-search {
   size     : 14px;
 }
 
-textbox-prompt-colon {
-  content : "run:";
-}
 
 textbox {
   padding          : 4px 8px;

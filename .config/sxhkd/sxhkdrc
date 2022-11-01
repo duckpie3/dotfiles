@@ -14,6 +14,23 @@ super + @space
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# take screenshot
+Print
+	escrotum -e 'dunstify "Screenshot saved at ~/Media/images/screenshots/"' '~/Media/Images/screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'
+
+# select area to screenshot
+shift + Print
+	escrotum -s -e 'dunstify "Screenshot saved at ~/Media/images/screenshots/"' '~/Media/Images/screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'
+
+# save screenshot to clipboard
+ctrl + Print
+	escrotum -C -e 'dunstify "Screenshot saved to clipboard"'
+
+# save selected area screenshot to clipboard
+shift + ctrl + Print
+	escrotum -sC -e 'dunstify "Screenshot saved to clipboard"'
+	
+
 #
 # bspwm hotkeys
 #
