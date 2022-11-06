@@ -1,3 +1,7 @@
+[character]
+success_symbol = "[](red)[](blue)[](green)"
+error_symbol = "[](red) "
+
 [line_break]
 disabled = true
 

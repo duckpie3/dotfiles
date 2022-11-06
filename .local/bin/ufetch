@@ -58,27 +58,39 @@ if [ -x "$(command -v tput)" ]; then
 	blue="$(tput setaf 4)"
 	magenta="$(tput setaf 5)"
 	cyan="$(tput setaf 6)"
-	white="$(tput setaf 7)"
+	cyan2="$(tput setaf 14)"
+	white="$(tput setaf 15)"
 	reset="$(tput sgr0)"
 fi
 
 # you can change these
-lc="${reset}${bold}${blue}"        # labels
-nc="${reset}${bold}${green}"       # user and hostname
-ic="${reset}${magenta}"            # info
-c0="${reset}${white}"              # first color
-c1="${reset}${cyan}"
+#labels
+lc1="${reset}${bold}${red}"
+lc2="${reset}${bold}${green}"        
+lc3="${reset}${bold}${yellow}"        
+lc4="${reset}${bold}${blue}"      
+lc5="${reset}${bold}${magenta}"        
+lc6="${reset}${bold}${cyan}"        
+# user and hostname
+nc="${reset}${bold}${cyan2}"     
+# info
+ic="${reset}"     
+# logo
+c0="${reset}${bold}${blue}"  
+c1="${reset}${bold}${blue}"
 
 
 ## OUTPUT
 cat <<EOF
 
 ${c1}       /\\	 ${nc}${USER}${ic}@${nc}${host}${reset}
-${c1}      /  \\	 ${lc}os:     ${ic}${os}${reset}	
-${c1}     /\\   \\	 ${lc}kernel: ${ic}${kernel}${reset}
-${c0}    /      \\	 ${lc}uptime: ${ic}${uptime}${reset}
-${c0}   /   ,,   \\	 ${lc}pkgs:   ${ic}${packages}${reset}
-${c0}  /   |  |  -\\	 ${lc}shell:  ${ic}${shell}${reset}
-${c0} /_-''    ''-_\\	 ${lc}${uitype}:     ${ic}${ui}${reset}
+${c1}      /  \\	 ${lc1}os:     ${ic}${os}${reset}	
+${c1}     /\\   \\	 ${lc2}kernel: ${ic}${kernel}${reset}
+${c0}    /      \\	 ${lc3}uptime: ${ic}${uptime}${reset}
+${c0}   /   ,,   \\	 ${lc4}pkgs:   ${ic}${packages}${reset}
+${c0}  /   |  |  -\\	 ${lc5}shell:  ${ic}${shell}${reset}
+${c0} /_-''    ''-_\\	 ${lc6}${uitype}:     ${ic}${ui}${reset}
+
+	    ${lc1}󰊠 ${lc2}󰊠 ${lc4}󰊠 ${lc5}󰊠 ${lc6}󰊠  ${lc3}󰮯
 
 EOF

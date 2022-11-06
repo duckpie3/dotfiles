@@ -33,7 +33,7 @@ element-icon, element-text, scrollbar {
 
 window {
   location : center;
-  width    : 400px;
+  width    : 375px;
   x-offset : 10px;
   y-offset : 40px;
 

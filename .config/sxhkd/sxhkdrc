@@ -16,19 +16,19 @@ super + Escape
 
 # take screenshot
 Print
-	escrotum -e 'dunstify "Screenshot saved at ~/Media/images/screenshots/"' '~/Media/Images/screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'
+	escrotum '~/Media/Images/screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'; dunstify "Screenshot saved at ~/Media/images/screenshots/"
 
 # select area to screenshot
 shift + Print
-	escrotum -s -e 'dunstify "Screenshot saved at ~/Media/images/screenshots/"' '~/Media/Images/screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'
+	escrotum -s '~/Media/Images/screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'; dunstify "Screenshot saved at ~/Media/images/screenshots/"
 
 # save screenshot to clipboard
 ctrl + Print
-	escrotum -C -e 'dunstify "Screenshot saved to clipboard"'
+	escrotum -C; dunstify "Screenshot saved to clipboard"
 
 # save selected area screenshot to clipboard
 shift + ctrl + Print
-	escrotum -sC -e 'dunstify "Screenshot saved to clipboard"'
+	escrotum -sC; dunstify "Screenshot saved to clipboard"
 	
 
 #
