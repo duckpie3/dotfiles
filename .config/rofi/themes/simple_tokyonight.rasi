@@ -16,7 +16,7 @@
   magenta2 : #bb9af7;
   cyan    : #4abaaf;
 
-  accent: @blue;
+  accent: @fg1;
   urgent: @red;
 
   background-color : transparent;
