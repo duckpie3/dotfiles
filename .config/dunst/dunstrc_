@@ -193,7 +193,7 @@
 
     # Recursive icon lookup. You can set a single theme, instead of having to
     # define all lookup paths.
-    enable_recursive_icon_lookup = false
+    enable_recursive_icon_lookup = true
 
     # Set icon theme (only used for recursive icon lookup)
     icon_theme = Adwaita
@@ -212,7 +212,8 @@
     max_icon_size = 128
 
     # Paths to default icons (only neccesary when not using recursive icon lookup)
-    icon_path = /home/david/.local/share/icons/dunst/
+    icon_path = /usr/share/icons/Adwaita/48x48/devices/
+
     ### History ###
 
     # Should a notification popped up from history be sticky or timeout
@@ -327,6 +328,10 @@
     timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable
     #default_icon = /path/to/icon
+
+#[play_sound]
+#    summary = "*"
+#    script = /home/david/.config/dunst/alert.sh
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.

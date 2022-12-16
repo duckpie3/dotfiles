@@ -1,0 +1,19 @@
+set guioptions none
+
+set default-bg "#1a1b26"
+
+set statusbar-bg "#1a1b26"
+set statusbar-fg "#c0caf5"
+
+set recolor-lightcolor "#1a1b26"
+set recolor-darkcolor "#c0caf5" 
+
+set completion-bg "#1a1b26"
+set completion-fg "#c0caf5"
+
+set completion-highlight-bg "#f7768e"
+set completion-highlight-fg "#1a1b26"
+
+set inputbar-bg "#1a1b26"
+set inputbar-fg "#c0caf5"
+

@@ -16,19 +16,19 @@ super + Escape
 
 # take screenshot
 Print
-	escrotum '~/Media/Images/screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'; dunstify "Screenshot saved at ~/Media/images/screenshots/"
+	escrotum '~/Media/Images/screenshots/%Y-%m-%d-%H%M%S_$wx$h.png' && dunstify -i "screenshot" "Screenshot saved at ~/Media/images/screenshots/" && paplay /home/david/.config/sxhkd/screenshot1.wav
 
 # select area to screenshot
 shift + Print
-	escrotum -s '~/Media/Images/screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'; dunstify "Screenshot saved at ~/Media/images/screenshots/"
+	escrotum -s '~/Media/Images/screenshots/%Y-%m-%d-%H%M%S_$wx$h.png' && dunstify -i "screenshot" "Screenshot saved at ~/Media/images/screenshots/" && paplay /home/david/.config/sxhkd/screenshot1.wav
 
 # save screenshot to clipboard
 ctrl + Print
-	escrotum -C; dunstify "Screenshot saved to clipboard"
+	escrotum -C; dunstify -i "paperclip" "Screenshot saved to clipboard"
 
 # save selected area screenshot to clipboard
 shift + ctrl + Print
-	escrotum -sC; dunstify "Screenshot saved to clipboard"
+	escrotum -sC; dunstify -i "paperclip" "Screenshot saved to clipboard"
 	
 
 #
@@ -45,7 +45,7 @@ super + {_,shift + }w
 
 # alternate between the tiled and monocle layout
 super + m
-	bspc desktop -l next
+	bspc desktop -l next 
 
 # send the newest marked node to the newest preselected node
 super + y
@@ -84,7 +84,7 @@ super + {_,shift + }c
 	bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
-super + bracket{left,right}
+super + {z,x}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
