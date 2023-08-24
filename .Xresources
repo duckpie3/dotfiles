@@ -1,44 +1,40 @@
-! X colors.
+! Tomorrow Night colorscheme
+*background: #1d1f21
+*foreground: #c5c8c6
+*color0: #1d1f21
+*color8: #969896
+*color1: #cc6666
+*color9: #ff6c60
+*color2: #b5bd68
+*color10: #f0c674
+*color3: #f0c674
+*color11: #b5bd68
+*color4: #81a2be
+*color12: #81a2be
+*color5: #b294bb
+*color13: #de935f
+*color6: #8abeb7
+*color14: #8abeb7
+*color7: #c5c8c6
+*color15: #ffffff
 
-*foreground:        #a9b1d6
-*background:        #1a1b26
-*.foreground:       #a9b1d6
-*.background:       #1a1b26
+! Tomorrow Night colorscheme
+*.background: #1d1f21
+*.foreground: #c5c8c6
+*.color0: #1d1f21
+*.color8: #969896
+*.color1: #cc6666
+*.color9: #ff6c60
+*.color2: #b5bd68
+*.color10: #f0c674
+*.color3: #f0c674
+*.color11: #b5bd68
+*.color4: #81a2be
+*.color12: #81a2be
+*.color5: #b294bb
+*.color13: #de935f
+*.color6: #8abeb7
+*.color14: #8abeb7
+*.color7: #c5c8c6
+*.color15: #ffffff
 
-! Colors 0-15.
-*.color0: #1a1b26
-*color0:  #1a1b26
-*.color1: #ff9e64
-*color1:  #ff9e64
-*.color2: #f7768e
-*color2:  #f7768e
-*.color3: #e0af68
-*color3:  #e0af68
-*.color4: #9ece6a
-*color4:  #9ece6a
-*.color5: #73daca
-*color5:  #73daca
-*.color6: #b4f9f8
-*color6:  #b4f9f8
-*.color7: #2ac3de
-*color7:  #2ac3de
-*.color8: #7dcfff
-*color8:  #7dcfff
-*.color9: #7aa2f7
-*color9:  #7aa2f7
-*.color10: #bb9af7
-*color10:  #bb9af7
-*.color11: #c0caf5
-*color11:  #c0caf5
-*.color12: #9aa5ce
-*color12:  #9aa5ce
-*.color13: #565f89
-*color13:  #565f89
-*.color14: #cfc9c2
-*color14:  #cfc9c2
-*.color15: #a9b1d6
-*color15:  #a9b1d6
-
-! Black color that will not be affected by bold highlighting.
-*.color66: #1a1b26
-*color66:  #1a1b26
