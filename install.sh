@@ -26,11 +26,12 @@ cp .zshrc ~
 cp .Xresources ~
 
 echo "Installing needed packages"
-paru -S bspwm sxhkd alacritty rofi polybar ranger ueberzug \
+paru -S qtile alacritty rofi ranger ueberzug \
 	zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting \
 	picom-ibhagwan-git ttf-material-design-icons-desktop-git \
-	nerd-fonts-fantasque-sans-mono firefox doas man htop \
-	xorg-xsetroot hsetroot dunst sxiv libnotify escrotum-git polkit
+	ttf-mononoki-nerd firefox doas man htop \
+	xorg-xsetroot hsetroot dunst sxiv libnotify \
+	zathura mpv shotgun hacksaw brillo polkit
 
 # Give root permisions with doas
 echo "permit ${USER} as root" | sudo tee /etc/doas.conf
