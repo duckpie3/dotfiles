@@ -1,0 +1,56 @@
+#!/bin/sh
+
+if [ "$#" -eq 0 ]; then
+    DATE=$(date +"%Y-%m-%d_%H%M%S")
+    FILE="/home/david/Pictures/screenshots/$DATE.png"
+    shotgun $FILE
+    echo "Screenshot saved to $FILE"
+    exit 1
+fi
+
+# Iterate over command-line arguments
+while [[ $# -gt 0 ]]; do
+    key="$1"
+
+    # Check for different flag arguments
+    case $key in
+        -h|--help)
+            # Code to handle the "-h" or "--help" flag
+            echo "Displaying help..."
+            exit 0
+            ;;
+        -s)
+            # Selection
+            DATE=$(date +"%Y-%m-%d_%H%M%S")
+            FILE="/home/david/Pictures/screenshots/$DATE.png"
+            shotgun -g $(hacksaw) $FILE
+            echo "Screenshot saved to $FILE"
+            exit 1
+            ;;
+        -c)
+            # Full screen to clipboard
+            DATE=$(date +"%Y-%m-%d_%H%M%S")
+            FILE="/home/david/.cache/$DATE.png"
+            shotgun $FILE
+            xclip -selection clipboard -t image/png -i $FILE
+            rm $FILE
+            echo "Screenshot saved to clipboard"
+            exit 1
+            ;;
+        -sc)
+            # Selection to clipboard
+            DATE=$(date +"%Y-%m-%d_%H%M%S")
+            FILE="/home/david/.cache/$DATE.png"
+            shotgun -g $(hacksaw) $FILE
+            xclip -selection clipboard -t image/png -i $FILE
+            rm $FILE
+            echo "Screenshot saved to clipboard"
+            exit 1
+            ;;
+        *)
+            # Code to handle unrecognized arguments
+            echo "Unrecognized argument: $key"
+            exit 1
+            ;;
+    esac
+done
