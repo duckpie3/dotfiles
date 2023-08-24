@@ -29,7 +29,11 @@ alias ls='ls --color=auto'
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export LESS='-R --use-color -Dd+r$Du+b'
 
+alias code='vscodium'
+
 # Syntax highlightning
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
