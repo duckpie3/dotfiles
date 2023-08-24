@@ -14,21 +14,40 @@ super + @space
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# set brightness
+XF86MonBrightnessUp
+	brillo -q -u 150000 -A 5
+
+XF86MonBrightnessDown
+	brillo -q -u 150000 -U 5
+
+# change volume
+XF86AudioRaiseVolume
+	wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
+
+XF86AudioLowerVolume
+	wpctl set-volume -l 0.0 @DEFAULT_AUDIO_SINK@ 5%-
+
+# mute
+
+XF86AudioMute
+	wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
 # take screenshot
 Print
-	escrotum '~/Media/Images/screenshots/%Y-%m-%d-%H%M%S_$wx$h.png' && dunstify -i "screenshot" "Screenshot saved at ~/Media/images/screenshots/" && paplay /home/david/.config/sxhkd/screenshot1.wav
+	screenshot ; dunstify -i "screenshot" "Screenshot saved to ~/Pictures/screenshots/" && paplay /home/david/.config/sxhkd/screenshot1.wav
 
 # select area to screenshot
 shift + Print
-	escrotum -s '~/Media/Images/screenshots/%Y-%m-%d-%H%M%S_$wx$h.png' && dunstify -i "screenshot" "Screenshot saved at ~/Media/images/screenshots/" && paplay /home/david/.config/sxhkd/screenshot1.wav
+	screenshot -s ; dunstify -i "screenshot" "Screenshot saved at ~/Pictures/screenshots/" && paplay /home/david/.config/sxhkd/screenshot1.wav
 
 # save screenshot to clipboard
 ctrl + Print
-	escrotum -C; dunstify -i "paperclip" "Screenshot saved to clipboard"
+	screenshot -c ; dunstify -i "paperclip" "Screenshot saved to clipboard"
 
 # save selected area screenshot to clipboard
 shift + ctrl + Print
-	escrotum -sC; dunstify -i "paperclip" "Screenshot saved to clipboard"
+	screenshot -sc; dunstify -i "paperclip" "Screenshot saved to clipboard"
 	
 
 #
