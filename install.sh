@@ -29,7 +29,7 @@ echo "Installing needed packages"
 paru -S qtile qtile-extras-git alacritty rofi ranger ueberzug \
 	zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting \
 	picom-arian8j2-git ttf-material-design-icons-desktop-git \
-	ttf-mononoki-nerd firefox doas man htop \
+	ttf-mononoki-nerd doas man htop \
 	xorg-xsetroot hsetroot dunst sxiv libnotify \
 	zathura mpv shotgun hacksaw brillo polkit
 
@@ -38,6 +38,3 @@ echo "permit ${USER} as root" | sudo tee /etc/doas.conf
 
 echo "Setting zsh as default shell"
 chsh -s /usr/bin/zsh
-
-echo "Installing starship prompt"
-curl -sS https://starship.rs/install.sh | sh
