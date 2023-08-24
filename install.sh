@@ -28,7 +28,7 @@ cp .Xresources ~
 echo "Installing needed packages"
 paru -S qtile qtile-extras-git alacritty rofi ranger ueberzug \
 	zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting \
-	picom-ibhagwan-git ttf-material-design-icons-desktop-git \
+	picom-arian8j2-git ttf-material-design-icons-desktop-git \
 	ttf-mononoki-nerd firefox doas man htop \
 	xorg-xsetroot hsetroot dunst sxiv libnotify \
 	zathura mpv shotgun hacksaw brillo polkit
