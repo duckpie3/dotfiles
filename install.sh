@@ -26,7 +26,7 @@ cp .zshrc ~
 cp .Xresources ~
 
 echo "Installing needed packages"
-paru -S qtile alacritty rofi ranger ueberzug \
+paru -S qtile qtile-extras-git alacritty rofi ranger ueberzug \
 	zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting \
 	picom-ibhagwan-git ttf-material-design-icons-desktop-git \
 	ttf-mononoki-nerd firefox doas man htop \
