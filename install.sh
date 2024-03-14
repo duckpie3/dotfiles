@@ -30,7 +30,7 @@ paru -S qtile qtile-extras alacritty rofi ranger ueberzug \
 	zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting \
 	picom-simpleanims-git ttf-material-design-icons-desktop-git \
 	ttf-mononoki-nerd doas man htop \
-	xorg-xsetroot hsetroot xclip sxiv \
+	xorg-xsetroot hsetroot xclip nsxiv \
 	zathura mpv shotgun hacksaw brillo polkit
 
 # Give root permisions with doas
