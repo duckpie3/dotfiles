@@ -2,7 +2,7 @@
 
 if [ "$#" -eq 0 ]; then
     DATE=$(date +"%Y-%m-%d_%H%M%S")
-    FILE="/home/david/Pictures/screenshots/$DATE.png"
+    FILE="$HOME/Pictures/screenshots/$DATE.png"
     shotgun $FILE
     echo "Screenshot saved to $FILE"
     exit 1
@@ -22,7 +22,7 @@ while [[ $# -gt 0 ]]; do
         -s)
             # Selection
             DATE=$(date +"%Y-%m-%d_%H%M%S")
-            FILE="/home/david/Pictures/screenshots/$DATE.png"
+            FILE="/$HOME/Pictures/screenshots/$DATE.png"
             shotgun -g $(hacksaw) $FILE
             echo "Screenshot saved to $FILE"
             exit 1
@@ -30,7 +30,7 @@ while [[ $# -gt 0 ]]; do
         -c)
             # Full screen to clipboard
             DATE=$(date +"%Y-%m-%d_%H%M%S")
-            FILE="/home/david/.cache/$DATE.png"
+            FILE="$HOME/.cache/$DATE.png"
             shotgun $FILE
             xclip -selection clipboard -t image/png -i $FILE
             rm $FILE
@@ -40,7 +40,7 @@ while [[ $# -gt 0 ]]; do
         -sc)
             # Selection to clipboard
             DATE=$(date +"%Y-%m-%d_%H%M%S")
-            FILE="/home/david/.cache/$DATE.png"
+            FILE="$HOME/.cache/$DATE.png"
             shotgun -g $(hacksaw) $FILE
             xclip -selection clipboard -t image/png -i $FILE
             rm $FILE
