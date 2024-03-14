@@ -24,60 +24,16 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import re
+
 from libqtile import bar, layout
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 from qtile_extras import widget
-from qtile_extras.widget.decorations import PowerLineDecoration
-from qtile_extras.popup.toolkit import (
-    PopupGridLayout,
-    PopupRelativeLayout,
-    PopupImage,
-    PopupText
-)
+from qtile_extras.widget.decorations import RectDecoration, PowerLineDecoration
+
 from colors import tomorrow_night as tn
-import subprocess
-
-result = subprocess.run(['cat', '~/sysinfo.txt'], stdout=subprocess.PIPE)
-
-
-def show_popup(qtile):
-
-    controls = [
-        PopupImage(
-            filename="~/Pictures/jiji.png",
-            #pos_x=0,
-            #pos_y=0,
-            width=1,
-            height=1,
-            col = 0,
-        ),
-
-        PopupText(
-            text = result.stdout,
-            col = 1,
-            h_align = 'center',
-            font = 'Mononoki Nerd Font',
-            fontsize = 15,
-        )
-    ]
-
-    layout = PopupGridLayout(
-        qtile,
-        width=400,
-        height=400,
-        rows = 2,
-        cols= 2,
-        margin=10,
-        controls=controls,
-        background=tn['background'],
-        initial_focus=None,
-    )
-
-    layout.show(centered=False)
-
-
 
 mod = "mod4"
 terminal = "alacritty"
@@ -122,7 +78,11 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Open rofi app menu"),
+    Key([mod], "r", lazy.spawn("rofi -show drun -display-drun ''"), desc="Open rofi app menu"),
+    Key([], "Print", lazy.spawn("screenshot"), desc="Take full screenshot"),
+    Key(["shift"], "Print", lazy.spawn("screenshot -s"), desc="Take screenshot from selection"),
+    Key(["control"], "Print", lazy.spawn("screenshot -c"), desc="Take full screenshot to clipboard"),
+    Key(["shift", "control"], "Print", lazy.spawn("screenshot -sc"), desc="Take screenshot from selection to clipboard"),
     Key([],"XF86MonBrightnessUp", lazy.spawn("brillo -q -u 150000 -A 5"), desc="Increase screen brightness"),
     Key([],"XF86MonBrightnessDown", lazy.spawn("brillo -q -u 150000 -U 5"), desc="Decrease screen brightness"),
     Key([],"XF86AudioRaiseVolume", lazy.spawn("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"), desc="Increase volume"),
@@ -130,27 +90,25 @@ keys = [
     Key([],"XF86AudioMute", lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), desc="Mute volume"),
 ]
 
-
 groups = [
     Group(
         "1",
-        label="󰞷"
+        label="󰇧"
     ),
     Group(
         "2",
-        label="󰓓"
+        label="󰞷"
     ),
     Group(
         "3",
-        label="󰇧",
+        label="󰓓",
+        matches=[Match(wm_class='steam')]
     ),
     Group(
         "4",
-        label="󰉋",
-    ),
-    Group(
-        "5",
-        label="󰋑",
+        label="󰊠",
+        matches=[Match(wm_class=re.compile(r'steam_app*'))],
+        layout="floating",
     ),
 ]
 
@@ -179,78 +137,71 @@ for i in groups:
     )
 
 layouts = [
-    #layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=0, margin=6),
-    layout.Spiral(main_pane="left", clockwise=True, new_client_position='bottom', border_width=0, margin=6),
-    layout.Max(),
-    layout.Floating(border_width=0),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    layout.Bsp(margin=4, border_width=2, border_focus=tn['primary'], border_normal=tn['background-alt']),
+    #layout.Spiral(main_pane="left", clockwise=True, ratio=.5, new_client_position='bottom', border_width=0, margin=6),
+    layout.Floating(border_width=2, border_focus=tn['primary'], border_normal=tn['background-alt']),
 ]
 
 widget_defaults = dict(
     font="Mononoki Nerd Font",
     foreground=tn["foreground"],
+    background=tn["background"],
     fontsize=15,
     padding=6,
 )
 extension_defaults = widget_defaults.copy()
 
-rofi_power_menu = 'rofi -show power-menu -modi power-menu:rofi-power-menu -theme-str "entry { enabled: false; } listview { lines: 6; scrollbar: false; } * { accent: @red; } window { location: northwest; width: 250px; }"'
-
-powerline = {
+rect = {
     "decorations": [
-        PowerLineDecoration(path='forward_slash')
+        RectDecoration(colour=tn['primary'], radius=8, filled=True, padding_y=4, padding_x=4, group=False)
+    ],
+    "padding": 14,
+}
+pl = {
+    "decorations": [
+        PowerLineDecoration(use_widget_background=True, path="forward_slash", padding_y=0)
     ]
 }
-
-powerline_b = {
+rect_g = {
     "decorations": [
-        PowerLineDecoration(path='back_slash')
-    ]
+        RectDecoration(colour=tn['primary'], radius=8, filled=True, padding_y=4, padding_x=4, group=True)
+    ],
+    "padding": 5,
 }
+
+rect_systray = {
+    "decorations": [
+        RectDecoration(colour=tn['primary'], radius=8, filled=True, padding_y=4, padding_x=4, group=True)
+    ],
+    "padding": 12,
+}
+
+rofi_power_menu = 'rofi -show power-menu -modi "power-menu:rofi-power-menu --choices=shutdown/reboot/suspend/hibernate/logout" -theme-str " listview { lines: 5; scrollbar: false; } * { accent: @red; } window { location: northwest; width: 250px; y-offset: 44px; x-offset: 4px; children : [ listview ]; }"'
+mdi = 'Material Design Icons Desktop'
+systray = widget.Systray(**rect_systray)
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                #widget.Image(filename='~/.local/share/icons/arch.png', mouse_callbacks={"Button1":lazy.spawn(rofi_power_menu)}, **powerline, background='#ffffff'),
-                #widget.TextBox(" 󰣇", fontsize=28, padding=10, font='Material Design Icons Desktop', **powerline, foreground=tn["background"], background=tn["alert"], mouse_callbacks={"Button1":lazy.function(show_popup)}),
-                widget.TextBox(" 󰣇", fontsize=28, padding=10, font='Material Design Icons Desktop', **powerline, foreground=tn["background"], background=tn["alert"], mouse_callbacks={"Button1":lazy.spawn(rofi_power_menu)}),
-                widget.GroupBox(disable_drag=True, fontsize=20, highlight_method='line', highlight_color=tn["15"], inactive=tn["background"], active=tn['foreground'],this_current_screen_border=tn["8"], padding_x=4, font='Material Design Icons Desktop', **powerline, background=tn["15"]),
-                #widget.Wlan(interface='wlo1', format='{essid} {percent:2.0%}'),
-                widget.Memory(format='󰍛{MemUsed: .1f}{mm}', measure_mem='G', **powerline, background=tn["14"],),
-                widget.CPU(format='CPU {load_percent}%', background=tn["13"]),
-                widget.ThermalSensor(format='󰔏 {temp:.0f}{unit}', **powerline, background=tn["13"]),
-                widget.NvidiaSensors(format='GPU 󰔏 {temp}°C', **powerline, background=tn["12"]),
-                #widget.TaskList(),
-                widget.Spacer(**powerline_b, background=tn["background"]),
-                #widget.CurrentLayoutIcon(scale=0.6, foreground='#ffffff', **powerline_b),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.Systray(**powerline_b, background=tn['12']),
-                widget.PulseVolume(step=5, limit_max_volume=True, fmt='󰕾 {}', **powerline_b, background=tn['13']),
-                widget.Battery(format='{char} {percent:2.0%}', charge_char='󰂄', discharge_char='󱟞', empty_char='󰂃', low_foreground=tn['alert'], **powerline_b, background=tn['14']),
-                widget.Clock(format="󰸗 %d %b, %Y 󰥔 %H:%M %p ", background=tn['15']),
-                #widget.QuickExit(),
+                widget.TextBox(" 󰣇", fontsize=28, padding=10, font=mdi, foreground=tn["background"], background=tn['alert'], mouse_callbacks={"Button1":lazy.spawn(rofi_power_menu)},**pl),
+                widget.Memory(format='󰍛{MemUsed: .1f}{mm}', measure_mem='G', **rect),
+                widget.CPU(format=' CPU {load_percent}%', **rect_g),
+                widget.ThermalSensor(format='󰔏 {temp:.0f}{unit} ', threshold=85, foreground_alert=tn['alert'], **rect_g),
+                widget.NvidiaSensors(format='GPU 󰔏 {temp}°C', threshold=75, foreground_alert=tn['alert'], **rect),
+                widget.WiFiIcon(interface='wlo1', padding_y=10, active_colour=tn["foreground"], **rect),
+                widget.Spacer(),
+                widget.GroupBox(disable_drag=True, fontsize=20, highlight_method='block', highlight_color=tn["15"], inactive=tn["disabled"], active=tn['foreground'],this_current_screen_border=tn["primary"], padding=4, font=mdi),
+                widget.Spacer(),
+                widget.CurrentLayout(),
+                widget.WidgetBox(widgets=[systray], close_button_location='right', font=mdi, fontsize=24 ,text_closed='󰍞', text_open='󰍟', **rect_g),
+                widget.PulseVolume(step=5, limit_max_volume=True, fmt='󰕾 {}', **rect),
+                widget.Battery(format='{char} {percent:2.0%}', charge_char='󰂄', discharge_char='󱟞', empty_char='󰂃', not_charging_char='󰚥', low_foreground=tn['alert'], low_percentage=0.2, **rect),
+                widget.Clock(format="󰸗 %d %b, %Y 󰥔 %H:%M %p", **rect),
             ],
-            32,
+            36,
             border_width=[0, 0, 0, 0],  # Draw borders
-            background=tn["background"],
-            margin=[6, 6, 0, 6],
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            margin=[4,4,0,4],
         ),
     ),
 ]
@@ -268,7 +219,9 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
-    border_width=0,
+    border_width=2,
+    border_focus=tn['primary'],
+    border_normal=tn['background-alt'],
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
@@ -300,3 +253,4 @@ wl_input_rules = None
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+

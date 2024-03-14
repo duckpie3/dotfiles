@@ -1,6 +1,6 @@
 tomorrow_night = {
-    'background': '#1d1f21',
-    'background-alt': '#373b41',
+    'background-alt': '#1d1f21',
+    'background': '#181818',
     'foreground': '#D3D6D4',
     'primary': '#282a2e',
     'secondary': '#969896',
