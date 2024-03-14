@@ -151,5 +151,5 @@ configuration {
 }
 
 /* Dark theme. */
-@theme "./themes/tomorrow_night.rasi"
+@theme "./theme.rasi"
 

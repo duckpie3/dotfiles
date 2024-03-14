@@ -2,10 +2,10 @@
   font:   "Mononoki Nerd Font 13";
 
   bg0     : #282a2e;
-  bg1     : #1d1f21;
+  bg1     : #181818;
   bg2     : #24283b;
   bg3     : #4d5057;
-  fg0     : #c5c8c6;
+  fg0     : #D3D6D4;
   fg1     : #b294bb;
   fg2     : #373b41;
   red     : #cc6666;
@@ -21,10 +21,6 @@
 
   background-color : transparent;
   text-color       : @fg0;
-
-  margin  : 0;
-  padding : 0;
-  spacing : 0;
 }
 
 element-icon, element-text, scrollbar {
@@ -34,8 +30,6 @@ element-icon, element-text, scrollbar {
 window {
   location : center;
   width    : 375px;
-  x-offset : 10px;
-  y-offset : 40px;
 
   background-color: @bg1;
   border: 0px;
@@ -43,17 +37,26 @@ window {
   border-radius: 0px;
 }
 
+entry {
+  placeholder : "Search app";
+  placeholder-color : @bg3;
+}
+
+prompt {
+  content : ">";
+  text-color : @red;
+}
+
 inputbar {
   spacing  : 8px;
-  padding  : 8px 8px;
-  children : [ entry ];
-
+  padding  : 8px;
+  border-radius : 8;
+  children : [ prompt, entry ];
   background-color: @bg0;
 }
 
-icon-search, entry, element-icon, element-text {
+icon-search, element-icon, element-text {
   vertical-align: 0.5;
-  /*placeholder : "search";*/
   text-color : @fg0; 
 }
 
@@ -63,18 +66,13 @@ icon-search {
   size     : 14px;
 }
 
-
 textbox {
-  padding          : 4px 8px;
-  background-color : @bg2;
-}
-
-prompt {
-  text-color : @fg0;
+  padding : 8px;
+  blink : true;
 }
 
 listview {
-  padding      : 4px 0px;
+  padding      : 8px;
   lines        : 8;
   columns      : 1;
   scrollbar    : true;
@@ -83,7 +81,7 @@ listview {
 }
 
 element {
-  padding : 4px 8px;
+  padding : 6px;
   spacing : 8px;
 }
 
@@ -96,8 +94,9 @@ element normal active {
 }
 
 element selected {
-  text-color       : @bg1;
-  background-color : @accent;
+  text-color       : @fg0;
+  background-color : @bg3;
+  border-radius : 8;
 }
 
 element selected urgent {
@@ -108,7 +107,7 @@ element-icon {
   size: 0.8em;
 }
 
-element-text {
+element text {
   text-color: inherit;
 }
 
