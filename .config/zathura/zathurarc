@@ -1,29 +1,55 @@
 set guioptions none
 
-set default-bg "#1d1f21"
-set default-fg "#c5c8c6"
-set statusbar-bg "#282a2e"
-set statusbar-fg "#c5c8c6"
-set inputbar-bg "#373b41"
-set inputbar-fg "#c5c8c6"
-set notification-bg "#cc6666"
-set notification-fg "#1d1f21"
-set completion-bg "#373b41"
-set completion-fg "#c5c8c6"
+# Open document in fit-width mode by default
+set adjust-open "best-fit"
+
+# Font
+set font "Mononoki Nerd Font 12"
+
+# Copy selection to clipboard
+set selection-clipboard clipboard
+
+# Colors
+set default-bg "#181818"
+set default-fg "#D3D6D4"
+
+set statusbar-bg "#373b41"
+set statusbar-fg "#D3D6D4"
+
+set inputbar-bg "#282a2e"
+set inputbar-fg "#D3D6D4"
+
+set completion-bg "#282a2e"
+set completion-fg "#D3D6D4"
+
 set completion-group-bg "#282a2e"
 set completion-group-fg "#8abeb7"
+
 set completion-highlight-bg "#b294bb"
-set completion-highlight-fg "#1d1f21"
-set index-bg "#1d1f21"
-set index-fg "#c5c8c6"
-set index-active-bg "#373b41"
-set index-active-fg "#c5c8c6"
-set recolor-lightcolor "#1d1f21"
-set recolor-darkcolor "#c5c8c6"
-set highlight-color "#b294bb"
+set completion-highlight-fg "#181818"
+
+set index-bg "#181818"
+set index-fg "#D3D6D4"
+
+set index-active-bg "#282a2e"
+set index-active-fg "#8abeb7"
+
+set highlight-color "rgba(178, 148, 187, 0.5)"
 set highlight-active-color "#8abeb7"
-set render-loading-bg "#1d1f21"
-set render-loading-fg "#c5c8c6"
-set notification-error-bg "#1d1f21"
+
+set render-loading true
+set render-loading-bg "#181818"
+set render-loading-fg "#D3D6D4"
+
+set notification-bg "#282a2e"
+set notification-fg "#D3D6D4"
+
+set notification-warning-bg "#282a2e"
+set notification-warning-fg "#f0c674"
+
+set notification-error-bg "#282a2e"
 set notification-error-fg "#cc6666"
-set recolor-keephue false
+
+set recolor-lightcolor "#181818"
+set recolor-darkcolor "#D3D6D4"
+set recolor-keephue "true"
