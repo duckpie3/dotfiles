@@ -18,8 +18,10 @@
 *color7: #c5c8c6
 *color15: #ffffff
 
+*.font:Mononoki Nerd Font:size=13
+
 ! Tomorrow Night colorscheme
-*.background: #1d1f21
+*.background: #181818
 *.foreground: #c5c8c6
 *.color0: #1d1f21
 *.color8: #969896
@@ -37,4 +39,3 @@
 *.color14: #8abeb7
 *.color7: #c5c8c6
 *.color15: #ffffff
-
