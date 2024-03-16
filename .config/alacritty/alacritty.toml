@@ -7,3 +7,9 @@ family = "Mononoki Nerd Font"
 [window.padding]
 x = 8
 y = 8
+
+[cursor]
+style = { shape = "Underline", blinking = "On" }
+blink_interval = 500
+blink_timeout = 0
+unfocused_hollow = false
