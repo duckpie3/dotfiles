@@ -31,7 +31,8 @@ paru -S qtile qtile-extras alacritty rofi ranger ueberzug \
 	picom-simpleanims-git ttf-material-design-icons-desktop-git \
 	ttf-mononoki-nerd doas man htop \
 	xorg-xsetroot hsetroot xclip nsxiv \
-	zathura mpv shotgun hacksaw brillo polkit
+	zathura mpv shotgun hacksaw brillo polkit \
+	python-psutil python-iwlib python-pulsectl-asyncio
 
 # Give root permisions with doas
 echo "permit ${USER} as root" | sudo tee /etc/doas.conf
