@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Script to install my dotfiles (Needs fixing)
+
 echo "Updating packages"
 sudo pacman -Syu
 
