@@ -184,7 +184,8 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.TextBox(" 󰣇", fontsize=28, padding=10, font=mdi, foreground=tn["background"], background=tn['alert'], mouse_callbacks={"Button1":lazy.spawn(rofi_power_menu)},**pl),
+                # Left
+                widget.TextBox(" 󰣇", fontsize=28, padding=10,font=mdi, foreground=tn["background"], background=tn['alert'], mouse_callbacks={"Button1":lazy.spawn(rofi_power_menu)},**pl),
                 widget.Memory(format='󰍛{MemUsed: .1f}{mm}', measure_mem='G', **rect),
                 widget.CPU(format=' CPU {load_percent}%', **rect_g),
                 widget.ThermalSensor(format='󰔏 {temp:.0f}{unit} ', threshold=85, foreground_alert=tn['alert'], **rect_g),
@@ -192,12 +193,15 @@ screens = [
                 widget.WiFiIcon(interface='wlo1', padding_y=10, active_colour=tn["foreground"], **rect),
                 widget.Spacer(),
                 widget.GroupBox(disable_drag=True, fontsize=20, highlight_method='block', highlight_color=tn["15"], inactive=tn["disabled"], active=tn['foreground'],this_current_screen_border=tn["primary"], padding=4, font=mdi),
+
                 widget.Spacer(),
+
+                # Right
                 widget.CurrentLayout(),
                 widget.WidgetBox(widgets=[systray], close_button_location='right', font=mdi, fontsize=24 ,text_closed='󰍞', text_open='󰍟', **rect_g),
                 widget.PulseVolume(step=5, limit_max_volume=True, fmt='󰕾 {}', **rect),
                 widget.Battery(format='{char} {percent:2.0%}', charge_char='󰂄', discharge_char='󱟞', empty_char='󰂃', not_charging_char='󰚥', low_foreground=tn['alert'], low_percentage=0.2, **rect),
-                widget.Clock(format="󰸗 %d %b, %Y 󰥔 %H:%M %p", **rect),
+                widget.Clock(format="󰸗 %d %b, %Y 󰥔 %H:%M", **rect),
             ],
             36,
             border_width=[0, 0, 0, 0],  # Draw borders
@@ -215,6 +219,7 @@ mouse = [
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
+focus_on_window_activation = 'never'
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
