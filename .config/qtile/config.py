@@ -33,7 +33,7 @@ from libqtile.lazy import lazy
 from qtile_extras import widget
 from qtile_extras.widget.decorations import RectDecoration, PowerLineDecoration
 
-from colors import tomorrow_night as tn
+from colorscheme import colors as c
 
 mod = "mod4"
 terminal = "alacritty"
@@ -137,15 +137,15 @@ for i in groups:
     )
 
 layouts = [
-    layout.Bsp(margin=4, border_width=2, border_focus=tn['primary'], border_normal=tn['background-alt']),
+    layout.Bsp(margin=4, border_width=2, border_focus=c['gray2'], border_normal=c['bg-alt']),
     #layout.Spiral(main_pane="left", clockwise=True, ratio=.5, new_client_position='bottom', border_width=0, margin=6),
-    layout.Floating(border_width=2, border_focus=tn['primary'], border_normal=tn['background-alt']),
+    layout.Floating(border_width=2, border_focus=c['gray2'], border_normal=c['bg-alt']),
 ]
 
 widget_defaults = dict(
     font="Mononoki Nerd Font",
-    foreground=tn["foreground"],
-    background=tn["background"],
+    foreground=c["fg"],
+    background=c["bg"],
     fontsize=15,
     padding=6,
 )
@@ -153,7 +153,7 @@ extension_defaults = widget_defaults.copy()
 
 rect = {
     "decorations": [
-        RectDecoration(colour=tn['primary'], radius=8, filled=True, padding_y=4, padding_x=4, group=False)
+        RectDecoration(colour=c['gray2'], radius=12, filled=True, padding_y=4, padding_x=4, group=False)
     ],
     "padding": 14,
 }
@@ -164,14 +164,14 @@ pl = {
 }
 rect_g = {
     "decorations": [
-        RectDecoration(colour=tn['primary'], radius=8, filled=True, padding_y=4, padding_x=4, group=True)
+        RectDecoration(colour=c['gray2'], radius=12, filled=True, padding_y=4, padding_x=4, group=True)
     ],
     "padding": 5,
 }
 
 rect_systray = {
     "decorations": [
-        RectDecoration(colour=tn['primary'], radius=8, filled=True, padding_y=4, padding_x=4, group=True)
+        RectDecoration(colour=c['gray2'], radius=12, filled=True, padding_y=4, padding_x=4, group=True)
     ],
     "padding": 12,
 }
@@ -185,14 +185,14 @@ screens = [
         top=bar.Bar(
             [
                 # Left
-                widget.TextBox(" 󰣇", fontsize=28, padding=10,font=mdi, foreground=tn["background"], background=tn['alert'], mouse_callbacks={"Button1":lazy.spawn(rofi_power_menu)},**pl),
+                widget.TextBox(" 󰣇", fontsize=28, padding=10,font=mdi, foreground=c["bg"], background=c['red'], mouse_callbacks={"Button1":lazy.spawn(rofi_power_menu)},**pl),
                 widget.Memory(format='󰍛{MemUsed: .1f}{mm}', measure_mem='G', **rect),
                 widget.CPU(format=' CPU {load_percent}%', **rect_g),
-                widget.ThermalSensor(format='󰔏 {temp:.0f}{unit} ', threshold=85, foreground_alert=tn['alert'], **rect_g),
-                widget.NvidiaSensors(format='GPU 󰔏 {temp}°C', threshold=75, foreground_alert=tn['alert'], **rect),
-                widget.WiFiIcon(interface='wlo1', padding_y=10, active_colour=tn["foreground"], **rect),
+                widget.ThermalSensor(format='󰔏 {temp:.0f}{unit} ', threshold=85, foreground_alert=c['red'], **rect_g),
+                widget.NvidiaSensors(format='GPU 󰔏 {temp}°C', threshold=75, foreground=widget_defaults['foreground'], foreground_alert=c['red'], **rect),
+                widget.WiFiIcon(interface='wlo1', padding_y=10, active_colour=c["fg"], **rect),
                 widget.Spacer(),
-                widget.GroupBox(disable_drag=True, fontsize=20, highlight_method='block', highlight_color=tn["15"], inactive=tn["disabled"], active=tn['foreground'],this_current_screen_border=tn["primary"], padding=4, font=mdi),
+                widget.GroupBox(disable_drag=True, fontsize=20, highlight_method='block', highlight_color=c['gray2'], inactive=c['gray'], active=c['fg'],this_current_screen_border=c["gray2"], padding=4, font=mdi),
 
                 widget.Spacer(),
 
@@ -200,7 +200,7 @@ screens = [
                 widget.CurrentLayout(),
                 widget.WidgetBox(widgets=[systray], close_button_location='right', font=mdi, fontsize=24 ,text_closed='󰍞', text_open='󰍟', **rect_g),
                 widget.PulseVolume(step=5, limit_max_volume=True, fmt='󰕾 {}', **rect),
-                widget.Battery(format='{char} {percent:2.0%}', charge_char='󰂄', discharge_char='󱟞', empty_char='󰂃', not_charging_char='󰚥', low_foreground=tn['alert'], low_percentage=0.2, **rect),
+                widget.Battery(format='{char} {percent:2.0%}', charge_char='󰂄', discharge_char='󱟞', empty_char='󰂃', not_charging_char='󰚥', low_foreground=c['red'], low_percentage=0.2, **rect),
                 widget.Clock(format="󰸗 %d %b, %Y 󰥔 %H:%M", **rect),
             ],
             36,
@@ -225,8 +225,8 @@ bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
     border_width=2,
-    border_focus=tn['primary'],
-    border_normal=tn['background-alt'],
+    border_focus=c['gray2'],
+    border_normal=c['bg-alt'],
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,

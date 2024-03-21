@@ -1,0 +1,17 @@
+colors = {
+    'bg-alt': '#1d1f21',
+    'bg': '#181818',
+    'fg': '#D3D6D4',
+    'black': '#181818',
+    'gray3': '#1d1f21',
+    'gray2': '#282a2e',
+    'gray1': '#373b41',
+    'gray': '#4d5057',
+    'white': '#D3D6D4',
+    'red': '#cc6666',
+    'green': '#b5bd68',
+    'yellow': '#f0c674',
+    'blue': '#81a2be',
+    'magenta': '#b294bb',
+    'cyan': '#70c0ba',
+}
