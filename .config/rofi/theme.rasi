@@ -34,7 +34,7 @@ window {
   background-color: @bg1;
   border: 0px;
   border-color: @bg3;
-  border-radius: 0px;
+  border-radius: 14;
 }
 
 entry {
@@ -50,7 +50,7 @@ prompt {
 inputbar {
   spacing  : 8px;
   padding  : 8px;
-  border-radius : 8;
+  border-radius : 14;
   children : [ prompt, entry ];
   background-color: @bg0;
 }
@@ -96,7 +96,7 @@ element normal active {
 element selected {
   text-color       : @fg0;
   background-color : @bg3;
-  border-radius : 8;
+  border-radius : 12;
 }
 
 element selected urgent {
