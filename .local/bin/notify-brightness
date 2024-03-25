@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ "$1" == "+" ]; then
+    op="-A"
+elif [ "$1" == "-" ]; then
+    op="-U"
+else
+    op=""
+fi
+
+brillo -q -u 1500 $op $2
+
+brightness=$(brillo -q | awk -F. '{print $1}')
+
+if (( brightness > 66 ))
+then
+    icon="brightness-3"
+elif (( brightness > 33 ))
+then
+    icon="brightness-2"
+else
+    icon="brightness-1"
+fi
+
+dunstify -a "notify-brightness" -r 998 -h int:value:"$brightness" -i "$HOME/.local/share/icons/dunst/${icon}.svg" "${brightness}" -t 1700 

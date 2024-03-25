@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if [ "$1" == "mute" ]; then
+    wpctl set-muse @DEFAULT_SINK@ toggle
+elif [ "$1" == "+" ]; then
+    wpctl set-volume -l 1.0 @DEFAULT_SINK@ $2%+
+elif [ "$1" == "-" ]; then
+    wpctl set-volume -l 1.0 @DEFAULT_SINK@ $2%-
+fi
+
+
+volume=$(wpctl get-volume @DEFAULT_SINK@ | awk '{
+						    if (NF == 2) {
+							print $2*100
+						    } else {
+							print 0
+						    }}')
+if (( volume > 66 ))
+then
+    icon="volume-high"
+elif (( volume > 33 ))
+then
+    icon="volume-medium"
+elif (( volume > 0 ))
+then
+    icon="volume-low"
+else
+    icon="volume-off"
+fi
+
+dunstify -a "notify-volume" -r 999 -h int:value:"$volume" -i "$HOME/.local/share/icons/dunst/${icon}.svg" "${volume}" -t 1700 
