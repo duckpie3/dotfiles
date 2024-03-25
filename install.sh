@@ -1,9 +1,13 @@
 #!/bin/sh
 
-# Script to install my dotfiles (Needs fixing)
+# Script to install my dotfiles
+
+if [ "$USER" = "root" ]; then
+    echo "Please run this script as root"
+    exit 1
+fi
 
 # Ask the user for its username. This is so it can run the commands that require non root
-
 read -p "Please provide your username: " username
 
 userhome="/home/$username/"
