@@ -7,36 +7,36 @@ if [ "$USER" != "root" ]; then
     exit 1
 fi
 
-# Ask the user for its username. This is so it can run the commands that require non root
-read -p "Please provide your username: " user
+# Ask the user for its user. This is so it can run the commands that require non root
+read -p "Please provide your user: " user
 
-user="/home/$user/"
+home="/home/$user/"
 
 echo "Checking for updates"
 pacman -Syu --noconfirm && \
 
 echo "Installing paru"
-sudo -u $username git clone https://aur.archlinux.org/paru.git && \
-cd paru && sudo -u $username makepkg -si --noconfirm && cd ..
+sudo -u $user git clone https://aur.archlinux.org/paru.git && \
+cd paru && sudo -u $user makepkg -si --noconfirm && cd ..
 
 # Make a backup of previous config(if there is one)
 echo "Making a backup, just in case..."
-mkdir $userhome/config_backup
-cp -r $userhome/.config $userhome/config_backup/.config
-cp $userhome/.xinitrc $userhome/config_backup/
-cp $userhome/.zshrc $userhome/config_backup/
-cp $userhome/.Xresources $userhome/config_backup/
+mkdir $home/config_backup
+cp -r $home/.config $home/config_backup/.config
+cp $home/.xinitrc $home/config_backup/
+cp $home/.zshrc $home/config_backup/
+cp $home/.Xresources $home/config_backup/
 
 # Copy config files
-sudo -u $user cp -r .local/ $userhome/
-sudo -u $user cp -r .config $userhome/
-sudo -u $user cp -r .vim $userhome/
-sudo -u $user mkdir -p $userhome/Pictures/wallpapers 
-sudo -u $user mkdir $userhome/Pictures/screenshots
-sudo -u $user cp .xinitrc .zshrc .Xresources $userhome
+sudo -u $user cp -r .local/ $home/
+sudo -u $user cp -r .config $home/
+sudo -u $user cp -r .vim $home/
+sudo -u $user mkdir -p $home/Pictures/wallpapers 
+sudo -u $user mkdir $home/Pictures/screenshots
+sudo -u $user cp .xinitrc .zshrc .Xresources $home
 
 echo "Installing needed packages"
-sudo -u $username paru -S --noconfirm qtile qtile-extras alacritty rofi ranger ueberzug \
+sudo -u $user paru -S --noconfirm qtile qtile-extras alacritty rofi ranger ueberzug \
 		    zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting \
 		    picom-simpleanims-git ttf-material-design-icons-desktop-git \
 		    ttf-mononoki-nerd doas man htop \
@@ -45,10 +45,10 @@ sudo -u $username paru -S --noconfirm qtile qtile-extras alacritty rofi ranger u
 		    python-psutil python-iwlib python-pulsectl-asyncio dunst
 
 # Give root permisions with doas
-echo "permit $username as root" | tee /etc/doas.conf
+echo "permit $user as root" | tee /etc/doas.conf
 
 echo "Setting zsh as default shell"
-sudo -u $username chsh -s /usr/bin/zsh
+sudo -u $user chsh -s /usr/bin/zsh
 
 # Ask to install starship prompt
 while true; do
