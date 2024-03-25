@@ -2,7 +2,7 @@
 
 # Script to install my dotfiles
 
-if [ "$USER" = "root" ]; then
+if [ "$USER" != "root" ]; then
     echo "Please run this script as root"
     exit 1
 fi
