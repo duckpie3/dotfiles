@@ -42,7 +42,7 @@ sudo -u $username paru -S --noconfirm qtile qtile-extras alacritty rofi ranger u
 		    ttf-mononoki-nerd doas man htop \
 		    xorg-xsetroot hsetroot xclip nsxiv \
 		    zathura mpv shotgun hacksaw brillo polkit \
-		    python-psutil python-iwlib python-pulsectl-asyncio
+		    python-psutil python-iwlib python-pulsectl-asyncio dunst
 
 # Give root permisions with doas
 echo "permit $username as root" | tee /etc/doas.conf
