@@ -8,9 +8,9 @@ if [ "$USER" != "root" ]; then
 fi
 
 # Ask the user for its username. This is so it can run the commands that require non root
-read -p "Please provide your username: " username
+read -p "Please provide your username: " user
 
-userhome="/home/$username/"
+user="/home/$user/"
 
 echo "Checking for updates"
 pacman -Syu --noconfirm && \
@@ -28,12 +28,12 @@ cp $userhome/.zshrc $userhome/config_backup/
 cp $userhome/.Xresources $userhome/config_backup/
 
 # Copy config files
-cp -r .local/ $userhome/
-cp -r .config $userhome/
-cp -r .vim $userhome/
-mkdir -p $userhome/Pictures/wallpapers 
-mkdir $userhome/Pictures/screenshots
-cp .xinitrc .zshrc .Xresources $userhome
+sudo -u $user cp -r .local/ $userhome/
+sudo -u $user cp -r .config $userhome/
+sudo -u $user cp -r .vim $userhome/
+sudo -u $user mkdir -p $userhome/Pictures/wallpapers 
+sudo -u $user mkdir $userhome/Pictures/screenshots
+sudo -u $user cp .xinitrc .zshrc .Xresources $userhome
 
 echo "Installing needed packages"
 sudo -u $username paru -S --noconfirm qtile qtile-extras alacritty rofi ranger ueberzug \
@@ -52,7 +52,7 @@ sudo -u $username chsh -s /usr/bin/zsh
 
 # Ask to install starship prompt
 while true; do
-    read -p "Do you wish to install starship prompt? " yn
+    read -p "Do you wish to install starship prompt[Y/n]? " yn
     case $yn in
         [Yy]* ) curl -sS https://starship.rs/install.sh | sh ; break;;
         [Nn]* ) exit;;
