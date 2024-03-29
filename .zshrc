@@ -31,17 +31,15 @@ export PATH="$HOME/.local/bin:$PATH"
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
-alias ls='ls --color=auto'
+alias ls='ls -F --color=auto'
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export LESS='-R --use-color -Dd+r$Du+b'
 
 # Useful aliases
 alias code='vscodium'
-alias wificon='nmcli device wifi connect'
-alias wifilist='nmcli device wifi list'
 
 # enie
-alias enie='echo ñ'
+alias enie='printf ñ | xclip -selection clipboard -i && echo "enie copiada al portapapeles"'
 
 # Syntax highlightning
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
