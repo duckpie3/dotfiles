@@ -33,7 +33,9 @@ from libqtile.lazy import lazy
 from qtile_extras import widget
 from qtile_extras.widget.decorations import RectDecoration, PowerLineDecoration
 
-from colorscheme import colors as c
+from colorscheme import *
+
+# Keybindings and groups
 
 mod = "mod4"
 terminal = "alacritty"
@@ -83,11 +85,11 @@ keys = [
     Key(["shift"], "Print", lazy.spawn("screenshot -s"), desc="Take screenshot from selection"),
     Key(["control"], "Print", lazy.spawn("screenshot -c"), desc="Take full screenshot to clipboard"),
     Key(["shift", "control"], "Print", lazy.spawn("screenshot -sc"), desc="Take screenshot from selection to clipboard"),
-    Key([],"XF86MonBrightnessUp", lazy.spawn("brillo -q -u 150000 -A 5"), desc="Increase screen brightness"),
-    Key([],"XF86MonBrightnessDown", lazy.spawn("brillo -q -u 150000 -U 5"), desc="Decrease screen brightness"),
-    Key([],"XF86AudioRaiseVolume", lazy.spawn("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"), desc="Increase volume"),
-    Key([],"XF86AudioLowerVolume", lazy.spawn("wpctl set-volume -l 0.0 @DEFAULT_AUDIO_SINK@ 5%-"), desc="Decrease volume"),
-    Key([],"XF86AudioMute", lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), desc="Mute volume"),
+    Key([],"XF86MonBrightnessUp", lazy.spawn("notify-brightness + 5"), desc="Increase screen brightness"),
+    Key([],"XF86MonBrightnessDown", lazy.spawn("notify-brightness - 5"), desc="Decrease screen brightness"),
+    Key([],"XF86AudioRaiseVolume", lazy.spawn("notify-volume + 5"), desc="Increase volume"),
+    Key([],"XF86AudioLowerVolume", lazy.spawn("notify-volume - 5"), desc="Decrease volume"),
+    Key([],"XF86AudioMute", lazy.spawn("notify-volume mute"), desc="Mute volume"),
 ]
 
 groups = [
@@ -136,74 +138,83 @@ for i in groups:
         ]
     )
 
+# Layouts
 layouts = [
-    layout.Bsp(margin=4, border_width=2, border_focus=c['gray2'], border_normal=c['bg-alt']),
+    layout.Bsp(margin=4, border_width=2, border_focus=gray2, border_normal=bg_alt),
     #layout.Spiral(main_pane="left", clockwise=True, ratio=.5, new_client_position='bottom', border_width=0, margin=6),
-    layout.Floating(border_width=2, border_focus=c['gray2'], border_normal=c['bg-alt']),
+    layout.Floating(border_width=2, border_focus=gray2, border_normal=bg_alt),
 ]
 
+# Widget defaults
 widget_defaults = dict(
-    font="Mononoki Nerd Font",
-    foreground=c["fg"],
-    background=c["bg"],
-    fontsize=15,
+    font="JetBrainsMono Nerd Font",
+    foreground=fg,
+    background=gray2,
+    fontsize=14,
     padding=6,
 )
 extension_defaults = widget_defaults.copy()
 
+# Widget decorations
 rect = {
     "decorations": [
-        RectDecoration(colour=c['gray2'], radius=12, filled=True, padding_y=4, padding_x=4, group=False)
+        RectDecoration(radius=12, filled=True, padding_y=4, padding_x=4, group=False, use_widget_background=True)
     ],
     "padding": 14,
 }
+
 pl = {
     "decorations": [
-        PowerLineDecoration(use_widget_background=True, path="forward_slash", padding_y=0)
+        PowerLineDecoration(path="forward_slash", padding_y=0, use_widget_background=True)
     ]
 }
+
 rect_g = {
     "decorations": [
-        RectDecoration(colour=c['gray2'], radius=12, filled=True, padding_y=4, padding_x=4, group=True)
+        RectDecoration(radius=12, filled=True, padding_y=4, padding_x=4, group=True, use_widget_background=True)
     ],
     "padding": 5,
 }
 
 rect_systray = {
     "decorations": [
-        RectDecoration(colour=c['gray2'], radius=12, filled=True, padding_y=4, padding_x=4, group=True)
+        RectDecoration(radius=12, filled=True, padding_y=4, padding_x=4, group=True, use_widget_background=True)
     ],
     "padding": 12,
 }
 
-rofi_power_menu = 'rofi -show power-menu -modi "power-menu:rofi-power-menu --choices=shutdown/reboot/suspend/hibernate/logout" -theme-str " listview { lines: 5; scrollbar: false; } * { accent: @red; } window { location: northwest; width: 250px; y-offset: 44px; x-offset: 4px; children : [ listview ]; }"'
+# Widgets
+rofi_power_menu = 'rofi -show power-menu -modi "power-menu:rofi-power-menu --choices=shutdown/reboot/suspend/logout" -theme-str " listview { lines: 4; scrollbar: false; } * { accent: @red; } window { location: northwest; width: 250px; y-offset: 44px; x-offset: 4px; children : [ listview ]; }"'
 mdi = 'Material Design Icons Desktop'
 systray = widget.Systray(**rect_systray)
 
 screens = [
     Screen(
-        top=bar.Bar(
+       top=bar.Bar(
             [
                 # Left
-                widget.TextBox(" 󰣇", fontsize=28, padding=10,font=mdi, foreground=c["bg"], background=c['red'], mouse_callbacks={"Button1":lazy.spawn(rofi_power_menu)},**pl),
+                widget.TextBox(" 󰣇", fontsize=28, padding=10,font=mdi, foreground=bg, background=red, mouse_callbacks={"Button1":lazy.spawn(rofi_power_menu)},**pl),
+                widget.Spacer(length=1, background=bg),
                 widget.Memory(format='󰍛{MemUsed: .1f}{mm}', measure_mem='G', **rect),
                 widget.CPU(format=' CPU {load_percent}%', **rect_g),
-                widget.ThermalSensor(format='󰔏 {temp:.0f}{unit} ', threshold=85, foreground_alert=c['red'], **rect_g),
-                widget.NvidiaSensors(format='GPU 󰔏 {temp}°C', threshold=75, foreground=widget_defaults['foreground'], foreground_alert=c['red'], **rect),
-                widget.WiFiIcon(interface='wlo1', padding_y=10, active_colour=c["fg"], **rect),
-                widget.Spacer(),
-                widget.GroupBox(disable_drag=True, fontsize=20, highlight_method='block', highlight_color=c['gray2'], inactive=c['gray'], active=c['fg'],this_current_screen_border=c["gray2"], padding=4, font=mdi),
-
-                widget.Spacer(),
+                widget.ThermalSensor(format='󰔏 {temp:.0f}{unit} ', threshold=85, foreground_alert=red, **rect_g),
+                widget.NvidiaSensors(format='GPU 󰔏 {temp}°C', threshold=75, foreground=widget_defaults['foreground'], foreground_alert=red, **rect),
+                widget.WiFiIcon(interface='wlo1', padding_y=10, active_colour=fg, **rect),
+                
+                widget.Spacer(background=bg),
+                # Center
+                widget.GroupBox(disable_drag=True, font=mdi, fontsize=20, background=bg, highlight_method='text', inactive=gray1, active=fg, this_current_screen_border=blue, urgent_alert_method='text', urgent_text=red),
+                widget.Spacer(background=bg),
 
                 # Right
-                widget.CurrentLayout(),
+                widget.CurrentLayout(background=bg),
                 widget.WidgetBox(widgets=[systray], close_button_location='right', font=mdi, fontsize=24 ,text_closed='󰍞', text_open='󰍟', **rect_g),
-                widget.PulseVolume(step=5, limit_max_volume=True, fmt='󰕾 {}', **rect),
-                widget.Battery(format='{char} {percent:2.0%}', charge_char='󰂄', discharge_char='󱟞', empty_char='󰂃', not_charging_char='󰚥', low_foreground=c['red'], low_percentage=0.2, **rect),
-                widget.Clock(format="󰸗 %d %b, %Y 󰥔 %H:%M", **rect),
+                widget.PulseVolume(step=5, limit_max_volume=True, font=mdi, fontsize=18, emoji_list=["󰸈", "󰕿", "󰖀", "󰕾"], emoji=True, **rect),
+                widget.Battery(format='{char} {percent:2.0%}', full_char='󰁹', charge_char='󰂄', discharge_char='󱟞', empty_char='󰂃', not_charging_char='󰚥', low_foreground=red, low_percentage=0.2, notification_below=0.2, show_short_text=False, **rect),
+                widget.Clock(format="󰸗 %d %b, %Y 󰥔 %H:%M", mouse_callbacks={"Button1": lazy.spawn("show_cal")}, **rect),
             ],
             36,
+            background=bg,
             border_width=[0, 0, 0, 0],  # Draw borders
             margin=[4,4,0,4],
         ),
@@ -225,8 +236,8 @@ bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
     border_width=2,
-    border_focus=c['gray2'],
-    border_normal=c['bg-alt'],
+    border_focus=gray2,
+    border_normal=bg_alt,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
