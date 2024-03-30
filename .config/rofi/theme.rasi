@@ -1,20 +1,19 @@
 * {
-  font:   "Mononoki Nerd Font 13";
+  font:   "JetBrainsMono Nerd Font 12";
 
   bg0     : #282a2e;
-  bg1     : #181818;
+  bg1     : #161719;
   bg2     : #24283b;
   bg3     : #4d5057;
-  fg0     : #D3D6D4;
+  fg0     : #C5C8C6;
   fg1     : #b294bb;
   fg2     : #373b41;
   red     : #cc6666;
   green   : #b5bd68;
-  yellow  : #e0af68;
+  yellow  : #f0c674;
   blue    : #81a2be;
-  magenta : #9a7ecc;
-  magenta2 : #bb9af7;
-  cyan    : #4abaaf;
+  magenta : #b294bb;
+  cyan    : #70c0ba;
 
   accent: @fg1;
   urgent: @red;
@@ -95,7 +94,7 @@ element normal active {
 
 element selected {
   text-color       : @fg0;
-  background-color : @bg3;
+  background-color : @fg2;
   border-radius : 12;
 }
 
