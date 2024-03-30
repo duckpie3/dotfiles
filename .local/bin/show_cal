@@ -1,0 +1,3 @@
+#!/bin/bash
+
+notify-send --replace-id=997 "$(cal)"
