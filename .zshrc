@@ -22,8 +22,8 @@ key[Control-Right]="${terminfo[kRIT5]}"
 [[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
 [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
 
-
-eval "$(starship init zsh)"
+# Set the prompt
+PROMPT='%B%F{cyan}%~%b %(?.%F{green}.%F{red}) '
 export PATH="$HOME/.local/bin:$PATH"
 
 

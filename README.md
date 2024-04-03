@@ -52,10 +52,6 @@ Set zsh as default shell.
 chsh -s /usr/bin/zsh
 ```
 
-Additinally, might want to install [starship prompt](https://starship.rs/)
-```sh
-curl -sS https://starship.rs/install.sh | sh
-```
 
 ### Cool stuff
 
