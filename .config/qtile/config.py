@@ -24,7 +24,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import re
+import re, os
 
 from libqtile import bar, layout
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
@@ -39,16 +39,11 @@ from colorscheme import *
 
 mod = "mod4"
 terminal = "alacritty"
+usrbin = "/home/david/.local/bin/"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
-    # Switch between windows
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
@@ -57,36 +52,34 @@ keys = [
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
-    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+    Key([mod, "control"], "left", 
+        lazy.layout.grow_left().when(layout="bsp"),
+        lazy.layout.grow().when(layout="monadtall"),
+        desc="Grow window to the left"),
+    Key([mod, "control"], "right",
+        lazy.layout.grow_right().when(layout="bsp"),
+        lazy.layout.shrink().when(layout="monadtall"),
+        desc="Grow window to the right"),
+    Key([mod, "control"], "down", lazy.layout.grow_down().when(layout="bsp"), desc="Grow window down"),
+    Key([mod, "control"], "up", lazy.layout.grow_up().when(layout="bsp"), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     Key([mod], "t", lazy.window.toggle_floating(), desc="Put the focused window to/from floating mode"),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Put the focused window to/from fullscreen"),
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
-    Key(
-        [mod, "shift"],
-        "Return",
-        lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack",
-    ),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
+
+    
+    Key([mod, "control"], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawn("rofi -show drun -display-drun ''"), desc="Open rofi app menu"),
+    Key([mod, "control"], "delete", lazy.shutdown(), desc="Shutdown Qtile"),
+    # Misc
+    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod], "space", lazy.spawn("rofi -show drun -display-drun ''"), desc="Open rofi app menu"),
     Key([], "Print", lazy.spawn("screenshot"), desc="Take full screenshot"),
     Key(["shift"], "Print", lazy.spawn("screenshot -s"), desc="Take screenshot from selection"),
     Key(["control"], "Print", lazy.spawn("screenshot -c"), desc="Take full screenshot to clipboard"),
     Key(["shift", "control"], "Print", lazy.spawn("screenshot -sc"), desc="Take screenshot from selection to clipboard"),
     Key([],"XF86MonBrightnessUp", lazy.spawn("notify-brightness + 5"), desc="Increase screen brightness"),
     Key([],"XF86MonBrightnessDown", lazy.spawn("notify-brightness - 5"), desc="Decrease screen brightness"),
+
     Key([],"XF86AudioRaiseVolume", lazy.spawn("notify-volume + 5"), desc="Increase volume"),
     Key([],"XF86AudioLowerVolume", lazy.spawn("notify-volume - 5"), desc="Decrease volume"),
     Key([],"XF86AudioMute", lazy.spawn("notify-volume mute"), desc="Mute volume"),
@@ -138,11 +131,19 @@ for i in groups:
         ]
     )
 
+layout_defaults = {
+    "margin": 4,
+    "border_width": 2,
+    "border_focus": gray2,
+    "border_normal": bg_alt,
+    "single_border_width": 0,
+}
+
 # Layouts
 layouts = [
-    layout.Bsp(margin=4, border_width=2, border_focus=gray2, border_normal=bg_alt),
-    #layout.Spiral(main_pane="left", clockwise=True, ratio=.5, new_client_position='bottom', border_width=0, margin=6),
-    layout.Floating(border_width=2, border_focus=gray2, border_normal=bg_alt),
+    #layout.Bsp(**layout_defaults),
+    layout.MonadTall(change_ratio=0.02, **layout_defaults),
+    layout.Floating(**layout_defaults),
 ]
 
 # Widget defaults
@@ -199,6 +200,7 @@ screens = [
                 widget.CPU(format=' CPU {load_percent}%', **rect_g),
                 widget.ThermalSensor(format='󰔏 {temp:.0f}{unit} ', threshold=85, foreground_alert=red, **rect_g),
                 widget.NvidiaSensors(format='GPU 󰔏 {temp}°C', threshold=75, foreground=widget_defaults['foreground'], foreground_alert=red, **rect),
+                widget.DF(format='󰄫 {uf}|{r:.0f}%', warn_color=red, **rect),
                 widget.WiFiIcon(interface='wlo1', padding_y=10, active_colour=fg, **rect),
                 
                 widget.Spacer(background=bg),
