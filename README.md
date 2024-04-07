@@ -29,7 +29,7 @@ cd ..
 ```
 Install the packages.
 ```sh
-paru -S --noconfirm qtile qtile-extras alacritty rofi ranger ueberzug zsh zsh-commpletions zsh-autosuggestions zsh-syntax-highlighting picom-simpleanims-git ttf-material-design-icons-git ttf-jetbrains-mono-nerd doas man htop xorg-xsetroot hsetroot xclip nsxiv zathura zathura-pdf-mupdf mpv hacksaw brillo polkit python-psutil python-iwlib python-pulsectl-asyncio dunst
+paru -S --noconfirm qtile qtile-extras alacritty rofi ranger ueberzug zsh zsh-commpletions zsh-autosuggestions zsh-syntax-highlighting picom-simpleanims-git ttf-material-design-icons-git ttf-jetbrains-mono-nerd doas man htop xorg-xsetroot hsetroot xclip imv zathura zathura-pdf-mupdf mpv hacksaw brillo polkit python-psutil python-iwlib python-pulsectl-asyncio dunst
 ```
 Make a backup in case there are already other configs.
 ```sh

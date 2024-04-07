@@ -2,9 +2,9 @@
 
 if [ -z $2 ]; then
 	# Use -cover option as default
-	echo "hsetroot -cover $(readlink -f ${1})" > ~/restore_bg
+	echo "hsetroot -cover $(readlink -f ${1})" > ~/.restore_bg
 else
-	echo "hsetroot ${1} $(readlink -f ${2})" > ~/restore_bg
+	echo "hsetroot ${1} $(readlink -f ${2})" > ~/.restore_bg
 fi
-chmod +x ~/restore_bg
-~/restore_bg
+chmod +x ~/.restore_bg
+~/.restore_bg
