@@ -39,7 +39,6 @@ from colorscheme import *
 
 mod = "mod4"
 terminal = "alacritty"
-usrbin = "/home/david/.local/bin/"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -85,6 +84,15 @@ keys = [
     Key([],"XF86AudioMute", lazy.spawn("notify-volume mute"), desc="Mute volume"),
 ]
 
+layout_defaults = {
+    "margin": 4,
+    "border_width": 2,
+    "border_focus": gray2,
+    "border_normal": bg_alt,
+    "single_border_width": 0,
+}
+
+
 groups = [
     Group(
         "1",
@@ -97,7 +105,8 @@ groups = [
     Group(
         "3",
         label="󰓓",
-        matches=[Match(wm_class='steam')]
+        matches=[Match(wm_class='steam')],
+        layouts=[layout.MonadTall(ratio=0.8, **layout_defaults), layout.Floating(**layout_defaults)],
     ),
     Group(
         "4",
@@ -131,18 +140,11 @@ for i in groups:
         ]
     )
 
-layout_defaults = {
-    "margin": 4,
-    "border_width": 2,
-    "border_focus": gray2,
-    "border_normal": bg_alt,
-    "single_border_width": 0,
-}
-
 # Layouts
 layouts = [
     #layout.Bsp(**layout_defaults),
     layout.MonadTall(change_ratio=0.02, **layout_defaults),
+    layout.MonadWide(change_ratio=0.02, ratio=0.7, **layout_defaults),
     layout.Floating(**layout_defaults),
 ]
 
@@ -194,25 +196,26 @@ screens = [
        top=bar.Bar(
             [
                 # Left
-                widget.TextBox(" 󰣇", fontsize=28, padding=10,font=mdi, foreground=bg, background=red, mouse_callbacks={"Button1":lazy.spawn(rofi_power_menu)},**pl),
-                widget.Spacer(length=1, background=bg),
+                widget.Image(filename="~/.config/qtile/arch.svg", mask=True, margin=4, padding=8, adjust_x=4, colour=black, background=red, mouse_callbacks={"Button1":lazy.spawn(rofi_power_menu)}, **pl),
+                widget.Spacer(length=10, background=bg),
                 widget.Memory(format='󰍛{MemUsed: .1f}{mm}', measure_mem='G', **rect),
                 widget.CPU(format=' CPU {load_percent}%', **rect_g),
                 widget.ThermalSensor(format='󰔏 {temp:.0f}{unit} ', threshold=85, foreground_alert=red, **rect_g),
                 widget.NvidiaSensors(format='GPU 󰔏 {temp}°C', threshold=75, foreground=widget_defaults['foreground'], foreground_alert=red, **rect),
                 widget.DF(format='󰄫 {uf}|{r:.0f}%', warn_color=red, **rect),
                 widget.WiFiIcon(interface='wlo1', padding_y=10, active_colour=fg, **rect),
+                #widget.IWD(show_image=True, interface='wlo1', padding_y=10, active_colour=fg, **rect),
                 
                 widget.Spacer(background=bg),
                 # Center
-                widget.GroupBox(disable_drag=True, font=mdi, fontsize=20, background=bg, highlight_method='text', inactive=gray1, active=fg, this_current_screen_border=blue, urgent_alert_method='text', urgent_text=red),
+                widget.GroupBox(disable_drag=True, font=mdi, fontsize=20, background=bg, highlight_method='line', highlight_color=bg, inactive=gray1, active=fg, this_current_screen_border=magenta, urgent_alert_method='text', urgent_text=red),
                 widget.Spacer(background=bg),
 
                 # Right
                 widget.CurrentLayout(background=bg),
                 widget.WidgetBox(widgets=[systray], close_button_location='right', font=mdi, fontsize=24 ,text_closed='󰍞', text_open='󰍟', **rect_g),
                 widget.PulseVolume(step=5, limit_max_volume=True, font=mdi, fontsize=18, emoji_list=["󰸈", "󰕿", "󰖀", "󰕾"], emoji=True, **rect),
-                widget.Battery(format='{char} {percent:2.0%}', full_char='󰁹', charge_char='󰂄', discharge_char='󱟞', empty_char='󰂃', not_charging_char='󰚥', low_foreground=red, low_percentage=0.2, notification_below=0.2, show_short_text=False, **rect),
+                widget.Battery(format='{char} {percent:2.0%}', full_char='󰁹', charge_char='󰂄', discharge_char='󱟞', empty_char='󰂃', not_charging_char='󰚥', low_foreground=red, low_percentage=0.2, notify_below=0.2, show_short_text=False, **rect),
                 widget.Clock(format="󰸗 %d %b, %Y 󰥔 %H:%M", mouse_callbacks={"Button1": lazy.spawn("show_cal")}, **rect),
             ],
             36,
@@ -225,7 +228,7 @@ screens = [
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
+    Drag([mod], "Button1",lazy.window.set_position_floating(), start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
@@ -234,7 +237,8 @@ dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 focus_on_window_activation = 'never'
 follow_mouse_focus = True
-bring_front_click = False
+bring_front_click = True
+floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
     border_width=2,
@@ -252,7 +256,6 @@ floating_layout = layout.Floating(
     ]
 )
 auto_fullscreen = True
-focus_on_window_activation = "smart"
 reconfigure_screens = True
 
 # If things like steam games want to auto-minimize themselves when losing

@@ -71,6 +71,7 @@ lc3="${reset}${bold}${yellow}"
 lc4="${reset}${bold}${blue}"      
 lc5="${reset}${bold}${magenta}"        
 lc6="${reset}${bold}${cyan}"        
+lc7="${reset}${bold}${black}"        
 # user and hostname
 nc="${reset}${bold}${cyan2}"     
 # info
@@ -82,15 +83,14 @@ c1="${reset}${bold}${blue}"
 
 ## OUTPUT
 cat <<EOF
-
-${c1}       /\\	 ${nc}${USER}${ic}@${nc}${host}${reset}
-${c1}      /  \\	 ${lc1}os:     ${ic}${os}${reset}	
-${c1}     /\\   \\	 ${lc2}kernel: ${ic}${kernel}${reset}
-${c0}    /      \\	 ${lc3}uptime: ${ic}${uptime}${reset}
-${c0}   /   ,,   \\	 ${lc4}pkgs:   ${ic}${packages}${reset}
-${c0}  /   |  |  -\\	 ${lc5}shell:  ${ic}${shell}${reset}
-${c0} /_-''    ''-_\\	 ${lc6}${uitype}:     ${ic}${ui}${reset}
-
-	    ${lc1}󰊠 ${lc2}󰊠 ${lc4}󰊠 ${lc5}󰊠 ${lc6}󰊠  ${lc3}󰮯
+		  ${ic}${lc1}${USER}${ic}@${lc1}${host}${reset}
+${c1}       /\\   	  ${ic}╭────────╮
+${c1}      /  \\	  ${lc1}│ ${lc1}OS:    │ ${lc4}󰣇 ${ic}${os}${reset}
+${c1}     /\\   \\	  ${lc2}│ ${lc2}kernel:│ ${reset} ${ic}${kernel}${reset}
+${c0}    /      \\	  ${lc4}│ ${lc4}pkgs:  │ ${lc3}󰮯 ${ic}${packages}${reset} ${lc3}
+${c0}   /   ,,   \\	  ${lc5}│ ${lc5}shell: │  ${ic}${shell}${reset}
+${c0}  /   |  |  -\\    ${lc6}│ ${lc6}${uitype}:    │  ${ic}${ui}${reset}
+${c0} /_-''    ''-_\\   ${lc3}│ uptime:│${ic} 󰞌 ${uptime}${reset}
+                  ╰────────╯
 
 EOF

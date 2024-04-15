@@ -31,18 +31,18 @@ Install the packages.
 ```sh
 paru -S --noconfirm qtile qtile-extras alacritty rofi ranger ueberzug zsh zsh-commpletions zsh-autosuggestions zsh-syntax-highlighting picom-simpleanims-git ttf-material-design-icons-git ttf-jetbrains-mono-nerd doas man htop xorg-xsetroot hsetroot xclip imv zathura zathura-pdf-mupdf mpv hacksaw brillo polkit python-psutil python-iwlib python-pulsectl-asyncio dunst
 ```
-Make a backup in case there are already other configs.
+Make a backup in case other configuration files exist.
 ```sh
 mv ~/.config config_backup
 ```
 
-Copy all the configs.
+Copy all the configs from the repo.
 ```sh
 cp -r .* ~/
 rm -r ~/.git
 ```
 
-Allow user to use doas.
+Allow user to use doas(optional).
 ```sh
 echo "permit $USER as root" | sudo tee /etc/doas.conf
 ```
@@ -51,10 +51,10 @@ Set zsh as default shell.
 ```sh
 chsh -s /usr/bin/zsh
 ```
-
+### Wallpaper artists
+- https://www.artstation.com/paindude
 
 ### Cool stuff
 
-- [ranger-devicons2](https://github.com/cdump/ranger-devicons2)
+- [ranger-devicons](https://github.com/alexanderjeurissen/ranger_devicons)
 - [disco.vim](https://github.com/jsit/disco.vim)
-- [colorizer](https://github.com/lilydjwg/colorizer)
