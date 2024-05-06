@@ -19,8 +19,6 @@ zstyle ':completion:*' menu select
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 bindkey '^H' backward-kill-word
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
 
 # Set the prompt
 PROMPT='%B%F{cyan}%~%b %(?.%F{green}.%F{red}) '
@@ -47,8 +45,5 @@ alias enie='printf ñ | xclip -selection clipboard -i && echo "enie copiada al p
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-# History substring search
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=none
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)

@@ -4,23 +4,23 @@ set guioptions none
 set adjust-open "best-fit"
 
 # Font
-set font "Mononoki Nerd Font 12"
+set font "JetBrainsMono Nerd Font 11"
 
 # Copy selection to clipboard
 set selection-clipboard clipboard
 
 # Colors
-set default-bg "#181818"
-set default-fg "#D3D6D4"
+set default-bg "#161719"
+set default-fg "#C5C8C6"
 
 set statusbar-bg "#373b41"
-set statusbar-fg "#D3D6D4"
+set statusbar-fg "#C5C8C6"
 
 set inputbar-bg "#282a2e"
-set inputbar-fg "#D3D6D4"
+set inputbar-fg "#C5C8C6"
 
 set completion-bg "#282a2e"
-set completion-fg "#D3D6D4"
+set completion-fg "#C5C8C6"
 
 set completion-group-bg "#282a2e"
 set completion-group-fg "#8abeb7"
@@ -28,21 +28,21 @@ set completion-group-fg "#8abeb7"
 set completion-highlight-bg "#b294bb"
 set completion-highlight-fg "#181818"
 
-set index-bg "#181818"
-set index-fg "#D3D6D4"
+set index-bg "#161719"
+set index-fg "#C5C8C6"
 
 set index-active-bg "#282a2e"
 set index-active-fg "#8abeb7"
 
 set highlight-color "rgba(178, 148, 187, 0.5)"
-set highlight-active-color "#8abeb7"
+set highlight-active-color "rgba(138, 190, 183, 0.5)"
 
 set render-loading true
-set render-loading-bg "#181818"
-set render-loading-fg "#D3D6D4"
+set render-loading-bg "#161719"
+set render-loading-fg "#C5C8C6"
 
 set notification-bg "#282a2e"
-set notification-fg "#D3D6D4"
+set notification-fg "#C5C8C6"
 
 set notification-warning-bg "#282a2e"
 set notification-warning-fg "#f0c674"
@@ -50,6 +50,6 @@ set notification-warning-fg "#f0c674"
 set notification-error-bg "#282a2e"
 set notification-error-fg "#cc6666"
 
-set recolor-lightcolor "#181818"
-set recolor-darkcolor "#D3D6D4"
+set recolor-lightcolor "#161719"
+set recolor-darkcolor "#C5C8C6"
 set recolor-keephue "true"

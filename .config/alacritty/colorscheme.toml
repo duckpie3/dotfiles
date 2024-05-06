@@ -6,27 +6,27 @@ background = '#161719'
 foreground = '#c5c8c6'
 
 [colors.cursor]
-text = '#1d1f21'
-cursor = '#ffffff'
+text = '#161719'
+cursor = '#c5c8c6'
 
 # Normal colors
 [colors.normal]
-black   = '#1d1f21'
+black   = '#161719'
 red     = '#cc6666'
 green   = '#b5bd68'
 yellow  = '#f0c674'
 blue    = '#81a2be'
 magenta = '#b294bb'
 cyan    = '#70c0ba'
-white   = '#373b41'
+white   = '#c5c8c6'
 
 # Bright colors
-#[colors.bright]
-#black   = '#666666'
-#red     = '#ff3334'
-#green   = '#9ec400'
-#yellow  = '#f0c674'
-#blue    = '#81a2be'
-#magenta = '#b77ee0'
-#cyan    = '#54ced6'
-#white   = '#282a2e'
+[colors.bright]
+black = '#282a2e'
+red = '#e05252'
+green = '#c6d350'
+yellow = '#ffcc66'
+blue = '#71a4d0'
+magenta = '#bc84cd'
+cyan = '#5cd6ce'
+white = '#e5e6e5'

@@ -24,7 +24,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import re, os
+import re
 
 from libqtile import bar, layout
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
@@ -53,18 +53,18 @@ keys = [
     # will be to screen edge - window would shrink.
     Key([mod, "control"], "left", 
         lazy.layout.grow_left().when(layout="bsp"),
-        lazy.layout.grow().when(layout="monadtall"),
+        lazy.layout.grow().when(layout=["monadtall", "monadwide"]),
         desc="Grow window to the left"),
     Key([mod, "control"], "right",
         lazy.layout.grow_right().when(layout="bsp"),
-        lazy.layout.shrink().when(layout="monadtall"),
+        lazy.layout.shrink().when(layout=["monadtall", "monadwide"]),
         desc="Grow window to the right"),
     Key([mod, "control"], "down", lazy.layout.grow_down().when(layout="bsp"), desc="Grow window down"),
     Key([mod, "control"], "up", lazy.layout.grow_up().when(layout="bsp"), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     Key([mod], "t", lazy.window.toggle_floating(), desc="Put the focused window to/from floating mode"),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Put the focused window to/from fullscreen"),
-
+    Key([mod], "Tab", lazy.screen.toggle_group()),
     
     Key([mod, "control"], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
@@ -104,13 +104,17 @@ groups = [
     ),
     Group(
         "3",
+        label="󰅴"
+    ),
+    Group(
+        "4",
         label="󰓓",
         matches=[Match(wm_class='steam')],
         layouts=[layout.MonadTall(ratio=0.8, **layout_defaults), layout.Floating(**layout_defaults)],
     ),
     Group(
-        "4",
-        label="󰊠",
+        "5",
+        label="󰊗",
         matches=[Match(wm_class=re.compile(r'steam_app*'))],
         layout="floating",
     ),
@@ -208,17 +212,17 @@ screens = [
                 
                 widget.Spacer(background=bg),
                 # Center
-                widget.GroupBox(disable_drag=True, font=mdi, fontsize=20, background=bg, highlight_method='line', highlight_color=bg, inactive=gray1, active=fg, this_current_screen_border=magenta, urgent_alert_method='text', urgent_text=red),
+                widget.GroupBox(disable_drag=True, fontsize=20, font=mdi, background=bg, highlight_method='line', highlight_color=bg, inactive=gray1, active=fg, this_current_screen_border=magenta, urgent_alert_method='text', urgent_text=red),
                 widget.Spacer(background=bg),
 
                 # Right
                 widget.CurrentLayout(background=bg),
-                widget.WidgetBox(widgets=[systray], close_button_location='right', font=mdi, fontsize=24 ,text_closed='󰍞', text_open='󰍟', **rect_g),
+                widget.WidgetBox(widgets=[systray], close_button_location='right', font=mdi, fontsize=24 , text_closed='󰍞', text_open='󰍟', **rect_g),
                 widget.PulseVolume(step=5, limit_max_volume=True, font=mdi, fontsize=18, emoji_list=["󰸈", "󰕿", "󰖀", "󰕾"], emoji=True, **rect),
-                widget.Battery(format='{char} {percent:2.0%}', full_char='󰁹', charge_char='󰂄', discharge_char='󱟞', empty_char='󰂃', not_charging_char='󰚥', low_foreground=red, low_percentage=0.2, notify_below=0.2, show_short_text=False, **rect),
+                widget.Battery(format='{char} {percent:2.0%}', full_char='󰁹', charge_char='󰂄', discharge_char='󱟞', empty_char='󰂃', not_charging_char='󰚥', low_foreground=red, low_percentage=0.2, notify_below=20, show_short_text=False, **rect),
                 widget.Clock(format="󰸗 %d %b, %Y 󰥔 %H:%M", mouse_callbacks={"Button1": lazy.spawn("show_cal")}, **rect),
             ],
-            36,
+            35,
             background=bg,
             border_width=[0, 0, 0, 0],  # Draw borders
             margin=[4,4,0,4],
@@ -247,6 +251,7 @@ floating_layout = layout.Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
+        Match(title="Steam Settings"),
         Match(wm_class="confirmreset"),  # gitk
         Match(wm_class="makebranch"),  # gitk
         Match(wm_class="maketag"),  # gitk
