@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$1" == "mute" ]; then
-    wpctl set-muse @DEFAULT_SINK@ toggle
+    wpctl set-mute @DEFAULT_SINK@ toggle
 elif [ "$1" == "+" ]; then
     wpctl set-volume -l 1.0 @DEFAULT_SINK@ $2%+
 elif [ "$1" == "-" ]; then
