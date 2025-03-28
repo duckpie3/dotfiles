@@ -1,15 +1,15 @@
-# ✨My dotfiles✨
+# My dotfiles
 
 ![screenshot](screenshot.png)
 ![screenshot1](screenshot1.png)
 
-- **WM:** Qtile
+- **WM:** Hyprland
 - **Terminal:** Alacritty
 - **Shell:** zsh
 - **File Explorer:** Ranger
-- **App launcher**: Rofi
+- **App launcher**: Tofi
 - **Doc reader:** Zathura
-- **Font:** Mononoki
+- **Font:** VictorMono
 - **Colorscheme:** Tomorrow Night
 
 ## Installation

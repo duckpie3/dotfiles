@@ -37,6 +37,7 @@ export LESS='-R --use-color -Dd+r$Du+b'
 
 # Useful aliases
 alias code='vscodium'
+alias hx="helix"
 
 # enie
 alias enie='printf ñ | xclip -selection clipboard -i && echo "enie copiada al portapapeles"'
