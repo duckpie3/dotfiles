@@ -1,0 +1,13 @@
+[manager]
+border_style = { fg = "darkgray", bold = true }
+
+
+[mode]
+normal_main = { fg = "black", bg = "blue", bold = true }
+normal_alt = { fg = "white", bg = "#403a3a", bold = true }
+
+select_main = { fg = "black", bg = "magenta", bold = true }
+select_alt = { fg = "white", bg = "#403a3a", bold = true }
+
+unset_main = { fg = "black", bg = "yellow", bold = true }
+unset_alt = { fg = "white", bg = "#403a3a", bold = true }

@@ -1,0 +1,129 @@
+@import "kanagawa-dragon.css";
+
+* {
+    /* `otf-font-awesome` and SpaceMono Nerd Font are required to be installed for icons */
+    font-family: VictorMono Nerd Font, FontAwesome;
+    font-size: 15px;
+    transition: background-color 0.3s ease-out;
+}
+
+window#waybar {
+    background: alpha(@black, 0.5);
+    color: @white;
+    transition: background-color 0.5s;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background: @black;
+    margin: 5px 10px;
+    padding: 0 5px;
+    border-radius: 15px;
+}
+.modules-left {
+    padding: 0;
+}
+.modules-center {
+    padding: 0 10px;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#language,
+#mpd {
+    padding: 0 10px;
+    border-radius: 15px;
+}
+
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#temperature:hover,
+#backlight:hover,
+#network:hover,
+#pulseaudio:hover,
+#wireplumber:hover,
+#custom-media:hover,
+#tray:hover,
+#mode:hover,
+#idle_inhibitor:hover,
+#scratchpad:hover,
+#power-profiles-daemon:hover,
+#language:hover,
+#mpd:hover {
+    background: @one_bg;
+}
+
+#workspaces button {
+    background: transparent;
+    font-weight: 900;
+    font-size: 13pt;
+    color: @white;
+    border: none;
+    border-radius: 15px;
+}
+
+#workspaces button.active {
+    background: @one_bg;
+}
+
+#workspaces button:hover {
+    background: @one_bg;
+    color: @white;
+    box-shadow: none;
+}
+
+#custom-arch {
+    margin-left: 5px;
+    padding: 0px 10px;
+    font-size: 25px;
+    color: @white;
+    border-radius: 15px;
+    transition: color 0.5s;
+}
+#custom-arch:hover {
+    color: @blue;
+}
+
+#pulseaudio-slider {
+    margin-left: -14px;
+}
+
+#pulseaudio-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+#pulseaudio-slider trough {
+    min-height: 8px;
+    min-width: 80px;
+    border-radius: 4px;
+    border: none;
+    background-color: @one_bg;
+}
+#pulseaudio-slider highlight {
+    min-width: 4px;
+    border-radius: 4px;
+    border: none;
+    background-color: @white;
+}

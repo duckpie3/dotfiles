@@ -1,0 +1,19 @@
+theme = "mytheme"
+
+[editor]
+cursorline = true
+shell = ["zsh", "-c"]
+scrolloff = 10
+color-modes = true
+popup-border = "all"
+
+[editor.soft-wrap]
+enable = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.indent-guides]
+render = true

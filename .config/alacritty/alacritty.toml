@@ -1,15 +1,64 @@
 [font]
-size = 9.0
+size = 12.0
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
+family = "VictorMono Nerd Font"
 
 [window.padding]
-x = 8
-y = 8
+x = 0
+y = 0
+
+[window]
+dynamic_padding = true
 
 [cursor]
 style = { shape = "Underline", blinking = "On" }
 blink_interval = 500
 blink_timeout = 0
 unfocused_hollow = false
+
+[env]
+TERM="xterm-256color"
+
+# Colors (Kanagawa Dragon)
+# Source https//github.com/rebelot/kanagawa.nvim
+[colors.primary]
+# background = '#121111'
+background = '#151413'
+# background = "#161719"
+foreground = '#cdc9c3'
+# foreground = '#c5c9c5'
+
+[colors.normal]
+black = '#0d0c0c'
+blue = '#8ca8b6'
+cyan = '#8ea4a2'
+green = '#8a9a7b'
+magenta = '#a292a3'
+red = '#c4746e'
+white = '#c7c09b'
+yellow = '#d0bc8d'
+# yellow = '#c4b28a'
+
+[colors.bright]
+black = '#676260'
+# black = '#a6a69c'
+blue = '#7FB4CA'
+cyan = '#7AA89F'
+green = '#87a987'
+magenta = '#938AA9'
+red = '#E46876'
+white = '#c5c9c5'
+yellow = '#E6C384'
+
+# [colors.selection]
+# background = '#2d4f67'
+# foreground = '#c8c093'
+
+[[colors.indexed_colors]]
+index = 16
+color = '#ffa066'
+
+[[colors.indexed_colors]]
+index = 17
+color = '#ff5d62'

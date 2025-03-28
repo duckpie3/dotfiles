@@ -1,32 +1,26 @@
-# Colors (Tomorrow Night)
+[colors]
 
-# Default colors
 [colors.primary]
-background = '#161719'
-foreground = '#c5c8c6'
+background = "#0f0f0f"  # base00
+foreground = "#d8d8d8"  # base05
 
-[colors.cursor]
-text = '#161719'
-cursor = '#c5c8c6'
-
-# Normal colors
 [colors.normal]
-black   = '#161719'
-red     = '#cc6666'
-green   = '#b5bd68'
-yellow  = '#f0c674'
-blue    = '#81a2be'
-magenta = '#b294bb'
-cyan    = '#70c0ba'
-white   = '#c5c8c6'
+black   = "#0f0f0f"  # base00
+red     = "#b18f91"  # base08
+green   = "#8aac8b"  # base0B
+yellow  = "#b1ae8f"  # base0A
+blue    = "#a5a0c2"  # base0D
+magenta = "#ac8aac"  # base0E
+cyan    = "#91b2b3"  # base0C
+white   = "#d8d8d8"  # base05
 
-# Bright colors
 [colors.bright]
-black = '#282a2e'
-red = '#e05252'
-green = '#c6d350'
-yellow = '#ffcc66'
-blue = '#71a4d0'
-magenta = '#bc84cd'
-cyan = '#5cd6ce'
-white = '#e5e6e5'
+black   = "#222222"  # base03
+red     = "#b18f91"  # base08
+green   = "#8aac8b"  # base0B
+yellow  = "#b1ae8f"  # base0A
+blue    = "#a5a0c2"  # base0D
+magenta = "#ac8aac"  # base0E
+cyan    = "#91b2b3"  # base0C
+white   = "#f0f0f0"  # base07
+
