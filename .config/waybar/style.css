@@ -2,31 +2,47 @@
 
 * {
     /* `otf-font-awesome` and SpaceMono Nerd Font are required to be installed for icons */
-    font-family: VictorMono Nerd Font, FontAwesome;
+    font-family: VictorMono Nerd Font Propo;
     font-size: 15px;
+    text-shadow: none;
+    box-shadow: none;
     transition: background-color 0.3s ease-out;
+    min-height: 0px;
 }
 
 window#waybar {
-    background: alpha(@black, 0.5);
+    background: @black;
     color: @white;
+    border: 1px solid @grey;
+    border-radius: 12px;
     transition: background-color 0.5s;
 }
+
+tooltip {
+  background: alpha(@black, 0.9);
+  border: none;
+  border-radius: 12px;
+  transition: opacity 0.3s;
+}
+
+tooltip label {
+  color: @white;
+}
+
 
 .modules-left,
 .modules-center,
 .modules-right {
     background: @black;
-    margin: 5px 10px;
-    padding: 0 5px;
-    border-radius: 15px;
+    margin: 4px 4px;
+    border-radius: 12px;
 }
-.modules-left {
+/* .modules-left {
     padding: 0;
 }
 .modules-center {
-    padding: 0 10px;
-}
+    padding: 0 0px;
+} */
 
 #clock,
 #battery,
@@ -45,9 +61,10 @@ window#waybar {
 #scratchpad,
 #power-profiles-daemon,
 #language,
+#window,
 #mpd {
-    padding: 0 10px;
-    border-radius: 15px;
+    padding: 0px 8px;
+    border-radius: 12px;
 }
 
 #clock:hover,
@@ -71,31 +88,43 @@ window#waybar {
     background: @one_bg;
 }
 
+#workspaces {
+    border: 1px solid @grey;
+    border-radius: 12px;
+}
+
 #workspaces button {
-    background: transparent;
-    font-weight: 900;
-    font-size: 13pt;
-    color: @white;
     border: none;
-    border-radius: 15px;
+    color: @white;
+    border-radius: 12px;
 }
 
 #workspaces button.active {
-    background: @one_bg;
+    background: @white;
+    color: @black;
 }
 
-#workspaces button:hover {
-    background: @one_bg;
-    color: @white;
-    box-shadow: none;
+#workspaces button.urgent {
+    color: @red;
 }
+
+#workspaces button.empty:not(.active) {
+    color: @light_grey;
+}
+
+#workspaces button:not(.active):hover {
+    background: @one_bg2;
+    border: 0px;
+}
+
 
 #custom-arch {
-    margin-left: 5px;
-    padding: 0px 10px;
+    /* padding: 20px 0px; */
+    padding-left: 12px;
+    padding-right: 10px;
+    margin: -2px 0px;
     font-size: 25px;
-    color: @white;
-    border-radius: 15px;
+    color: @red;
     transition: color 0.5s;
 }
 #custom-arch:hover {
@@ -103,9 +132,9 @@ window#waybar {
 }
 
 #pulseaudio-slider {
-    margin-left: -14px;
+    padding: 0px;
+    margin: 2px;
 }
-
 #pulseaudio-slider slider {
     min-height: 0px;
     min-width: 0px;
@@ -115,15 +144,13 @@ window#waybar {
     box-shadow: none;
 }
 #pulseaudio-slider trough {
-    min-height: 8px;
-    min-width: 80px;
-    border-radius: 4px;
-    border: none;
+    min-height: 10px;
+    min-width: 70px;
+    border-radius: 6px;
     background-color: @one_bg;
 }
 #pulseaudio-slider highlight {
-    min-width: 4px;
-    border-radius: 4px;
-    border: none;
+    min-width: 10px;
+    border-radius: 6px;
     background-color: @white;
 }

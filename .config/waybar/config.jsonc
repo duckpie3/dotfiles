@@ -1,11 +1,15 @@
 // -*- mode: jsonc -*-
 {
-  "layer": "top", // Waybar at top layer
+  "layer": "bottom", // Waybar at top layer
   "position": "bottom", // Waybar position (top|bottom|left|right)
-  "height": 42, // Waybar height (to be removed for auto height)
+  // "height": 42, // Waybar height (to be removed for auto height)
   // "width": 1280, // Waybar width
   "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
+  "margin-left" : 8,
+  "margin-right": 8,
+  "margin-top": 0,
+  "margin-bottom": 8,
   "modules-left": ["custom/arch", "hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
   "modules-right": [
@@ -21,6 +25,6 @@
     "clock",
   ],
   //Modules configuration
-
+  // "reload_style_on_change": true,
   "include": ["~/.config/waybar/modules.json"],
 }

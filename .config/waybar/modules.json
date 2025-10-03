@@ -6,15 +6,20 @@
   },
 
   "hyprland/workspaces": {
+    "persistent-workspaces": {
+      "*": 5
+    },
     "disable-scroll": true,
     "all-outputs": true,
     "warp-on-scroll": false,
-    "format": "{name}",
+    "format": "{icon}",
     "format-icons": {
-      "urgent": "",
-      "active": "",
-      "default": ""
-    }
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+    },
   },
 
   "hyprland/window": {
@@ -29,16 +34,16 @@
     }
   },
   "pulseaudio": {
-    "format": "{format_source}  {icon} ",
-    "format-bluetooth": "{icon} {volume}%  {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": "{format_source}   ",
-    "format-source": " {volume}%",
+    "format": "{icon}",
+    "format-bluetooth": "{icon} ",
+    "format-bluetooth-muted": "{icon} ",
+    "format-muted": "",
+    "format-source": " {volume}",
     "format-source-muted": "",
     "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
       "phone": "",
       "portable": "",
       "car": "",
@@ -48,18 +53,18 @@
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   },
   "network": {
-    "format-wifi": " ",
-    "format-ethernet": "{ipaddr}/{cidr} ",
-    "tooltip-format": "{essid} ({signalStrength}%)\n{ifname} via {gwaddr} ",
-    "format-linked": "{ifname} (No IP) ",
+    "format-wifi": "",
+    "format-ethernet": "{ipaddr}/{cidr} ",
+    "tooltip-format": "{essid} ({signalStrength}%)\n{ifname} via {gwaddr}",
+    "format-linked": "{ifname} (No IP)",
     "format-disconnected": "Disconnected "
   },
   "cpu": {
-    "format": "  {usage}%",
+    "format": " {usage}%",
     "tooltip": true
   },
   "memory": {
-    "format": " {}%",
+    "format": " {}%",
     "tooltip": true
   },
   "temperature": {
@@ -70,7 +75,7 @@
     "format": " {temperatureC}°C"
   },
   "hyprland/language": {
-    "format": "  {}",
+    "format": " {}",
     "format-en": "EN",
     "format-es": "ES"
   },
@@ -79,11 +84,11 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon}  {capacity}%",
-    "format-full": "{icon}  {capacity}%",
-    "format-charging": "  {capacity}%",
-    "format-plugged": "  {capacity}%",
-    "format-alt": "{time}  {icon}",
+    "format": "{icon} {capacity}%",
+    "format-full": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
     "format-icons": ["", "", "", "", ""]
   },
   "clock": {
