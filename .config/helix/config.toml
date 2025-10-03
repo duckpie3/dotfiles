@@ -3,9 +3,10 @@ theme = "mytheme"
 [editor]
 cursorline = true
 shell = ["zsh", "-c"]
-scrolloff = 10
+scrolloff = 0
 color-modes = true
 popup-border = "all"
+clipboard-provider = "wayland"
 
 [editor.soft-wrap]
 enable = true
@@ -17,3 +18,7 @@ select = "underline"
 
 [editor.indent-guides]
 render = true
+
+[keys.normal.space]
+r = [":write", ':run-shell-command python "%{buffer_name}"']
+# "space"=r = ":sh python %%"

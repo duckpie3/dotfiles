@@ -9,6 +9,7 @@ comment = { fg = "gray", modifiers = ["italic"]}
 "ui.gutter" = {bg = "default" }
 "ui.popup" = { bg = "default" }
 "ui.menu" = { bg = "default" }
+"ui.selection.primary" = { bg = "#343232" }
 
 # Override colors in the palette:
 [palette]
