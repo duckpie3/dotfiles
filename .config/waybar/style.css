@@ -147,10 +147,12 @@ tooltip label {
     min-height: 10px;
     min-width: 70px;
     border-radius: 6px;
+    border: none;
     background-color: @one_bg;
 }
 #pulseaudio-slider highlight {
     min-width: 10px;
     border-radius: 6px;
+    border: none;
     background-color: @white;
 }
