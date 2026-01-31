@@ -29,8 +29,8 @@
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-      "activated": "",
-      "deactivated": ""
+      "activated": "󰈈",
+      "deactivated": "󰈉"
     }
   },
   "pulseaudio": {
@@ -82,23 +82,39 @@
   "battery": {
     "states": {
       "warning": 30,
-      "critical": 15
+      "critical": 20
     },
     "format": "{icon} {capacity}%",
     "format-full": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
+    "format-charging": "<span foreground='#d0bc8d'></span> {capacity}%",
     "format-plugged": " {capacity}%",
     "format-alt": "{time} {icon}",
     "format-icons": ["", "", "", "", ""]
   },
   "clock": {
-    "format": " {:%H:%M | %e %B} ",
+    "format": " {:%H:%M |%e %B}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": " {:%H: %M}"
+    "format-alt": " {:%H:%M}"
   },
   "pulseaudio/slider": {
     "min": 0,
     "max": 100,
     "orientation": "horizontal"
+  },
+  "mpris": {
+  "dynamic-order": ["title", "artist", "album"],
+	"format": "{player_icon} {status_icon} {dynamic}",
+	"format-paused": "{player_icon} {status_icon} {dynamic}",
+  "dynamic-len": 32,
+	"player-icons": {
+		"default": "",
+    "spotify": "",
+    "firefox": "󰈹"
+	},
+	"status-icons": {
+		"playing": "",
+    "paused": ""
+  },
+	// "ignored-players": ["firefox"]
   }
 }

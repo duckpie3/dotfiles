@@ -11,7 +11,7 @@
   "margin-top": 0,
   "margin-bottom": 8,
   "modules-left": ["custom/arch", "hyprland/workspaces", "idle_inhibitor"],
-  "modules-center": ["hyprland/window"],
+  "modules-center": ["mpris"],
   "modules-right": [
     //"idle_inhibitor",
     "pulseaudio",
