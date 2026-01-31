@@ -1,9 +1,9 @@
 code_syntax_highlight = "github-dark"
 
 # ========= Border =========
-file_panel_border = "#676260"
-sidebar_border = "#676260"
-footer_border = "#676260"
+file_panel_border = "#4d4b49"
+sidebar_border = "#4d4b49"
+footer_border = "#4d4b49"
 
 # ========= Border Active =========
 file_panel_border_active = "#8ca8b6"
@@ -12,11 +12,11 @@ footer_border_active = "#8a9a7b"
 modal_border_active = "#a292a3"
 
 # ========= Background (bg) =========
-full_screen_bg = "#121111"
-file_panel_bg = "#121111"
-sidebar_bg = "#121111"
-footer_bg = "#121111"
-modal_bg = "#121111"
+full_screen_bg = "#141313"
+file_panel_bg = "#141313"
+sidebar_bg = "#141313"
+footer_bg = "#141313"
+modal_bg = "#141313"
 
 # ========= Foreground (fg) =========
 full_screen_fg = "#cdc9c3"
@@ -38,19 +38,19 @@ gradient_color = ["#8ca8b6", "#a292a3"]
 file_panel_top_directory_icon = "#8ea4a2"
 file_panel_top_path = "#8ca8b6"
 file_panel_item_selected_fg = "#8ca8b6"
-file_panel_item_selected_bg = "#121111"
+file_panel_item_selected_bg = "#141313"
 
 # ========= Sidebar Special Items =========
 sidebar_title = "#8ca8b6"
 sidebar_item_selected_fg = "#8ca8b6"
-sidebar_item_selected_bg = "#121111"
+sidebar_item_selected_bg = "#141313"
 sidebar_divider = "#c4746e"
 
 # ========= Modal Special Items =========
-modal_cancel_fg = "#121111"
+modal_cancel_fg = "#141313"
 modal_cancel_bg = "#c4746e"
 
-modal_confirm_fg = "#121111"
+modal_confirm_fg = "#141313"
 modal_confirm_bg = "#8a9a7b"
 
 # ========= Help Menu =========
