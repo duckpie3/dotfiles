@@ -1,0 +1,16 @@
+width = 100%
+height = 100%
+border-width = 0
+outline-width = 0
+padding-left = 35%
+padding-top = 35%
+result-spacing = 25
+num-results = 8
+font = "VictorMono Nerd Font"
+font-size = 18
+text-color = #cdc9c3
+selection-color = #c4746e
+background-color = #000C
+placeholder-text = "app name"
+placeholder-color = #676260
+text-cursor = true

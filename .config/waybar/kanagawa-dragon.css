@@ -1,0 +1,31 @@
+@define-color white #cdc9c3;
+@define-color darker_black #100e0e;
+@define-color black #121111; /* nvim bg */
+@define-color black2 #1f1d1d;
+@define-color one_bg #262424;
+@define-color one_bg2 #2d2b2b;
+@define-color one_bg3 #343232;
+@define-color grey #424040;
+@define-color grey_fg #504e4e;
+@define-color grey_fg2 #575555;
+@define-color light_grey #5e5c5c;
+@define-color red #c4746e;
+@define-color baby_pink #a292a3;
+@define-color pink #a292a3;
+@define-color line #282727; /* for lines like vertsplit */
+@define-color green #8a9a7b;
+@define-color vibrant_green #8a9a7b;
+@define-color blue #8ba4b0;
+@define-color nord_blue #8992a7;
+@define-color yellow #c4b28a;
+@define-color sun #b98d7b;
+@define-color purple #a292a3;
+@define-color dark_purple #8992a7;
+@define-color teal #949fb5;
+@define-color orange #b6927b;
+@define-color cyan #8ea4a2;
+@define-color statusline_bg #1f1d1d;
+@define-color lightbg #2d2b2b;
+@define-color pmenu_bg #87a987;
+@define-color folder_bg #87a987;
+@define-color lightgray #9e9b93;

@@ -1,0 +1,7 @@
+[[language]]
+name = "python"
+language-servers = [ "pyright" ]
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]

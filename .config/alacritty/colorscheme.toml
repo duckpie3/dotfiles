@@ -1,32 +1,21 @@
-# Colors (Tomorrow Night)
-
-# Default colors
 [colors.primary]
-background = '#161719'
-foreground = '#c5c8c6'
+background = '#141313'
+foreground = '#cdc9c3'
 
-[colors.cursor]
-text = '#161719'
-cursor = '#c5c8c6'
-
-# Normal colors
 [colors.normal]
-black   = '#161719'
-red     = '#cc6666'
-green   = '#b5bd68'
-yellow  = '#f0c674'
-blue    = '#81a2be'
-magenta = '#b294bb'
-cyan    = '#70c0ba'
-white   = '#c5c8c6'
+black = '#0d0c0c'
+blue = '#8ca8b6'
+cyan = '#8ea4a2'
+green = '#8a9a7b'
+magenta = '#a292a3'
+red = '#c4746e'
+white = '#cdc9c3'
+yellow = '#d0bc8d'
 
-# Bright colors
-[colors.bright]
-black = '#282a2e'
-red = '#e05252'
-green = '#c6d350'
-yellow = '#ffcc66'
-blue = '#71a4d0'
-magenta = '#bc84cd'
-cyan = '#5cd6ce'
-white = '#e5e6e5'
+[[colors.indexed_colors]]
+index = 16
+color = '#ffa066'
+
+[[colors.indexed_colors]]
+index = 17
+color = '#ff5d62'

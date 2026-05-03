@@ -1,0 +1,17 @@
+inherits = "base16_default"
+
+# Override the theming for "keyword"s:
+comment = { fg = "gray", modifiers = ["italic"]}
+
+"ui.statusline" = { fg = "white", bg = "black"}
+"ui.linenr" = {fg = "gray", bg = "default"}
+"ui.linenr.selected" = { bg = "default"}
+"ui.gutter" = {bg = "default" }
+"ui.popup" = { bg = "default" }
+"ui.menu" = { bg = "default" }
+"ui.selection.primary" = { bg = "#343232" }
+
+# Override colors in the palette:
+[palette]
+black = "#121111"
+white = "#CDC9C3"

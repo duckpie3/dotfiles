@@ -1,0 +1,202 @@
+@import "colors.css";
+
+* {
+    /* a nerd font is required to be installed for icons */
+    font-family: VictorMono Nerd Font Propo;
+    /* font-family: Maple Mono NF CN; */
+    font-size: 15px;
+    text-shadow: none;
+    box-shadow: none;
+    transition: background-color 0.3s ease-out;
+    min-height: 0px;
+}
+
+window#waybar {
+    background: @black;
+    color: @white;
+    border: 2px solid @light_black;
+    border-radius: 12px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    transition: background-color 0.5s;
+}
+
+tooltip {
+  background: alpha(@black, 0.9);
+  border: none;
+  border-radius: 12px;
+  transition: opacity 0.3s;
+}
+
+tooltip label {
+  color: @white;
+}
+
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background: @black;
+    margin: 4px 4px;
+    border-radius: 12px;
+}
+/* .modules-left {
+    padding: 0;
+}
+.modules-center {
+    padding: 0 0px;
+} */
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#language,
+#window,
+#mpd {
+    padding: 0px 8px;
+    border-radius: 12px;
+}
+
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#temperature:hover,
+#backlight:hover,
+#network:hover,
+#pulseaudio:hover,
+#wireplumber:hover,
+#custom-media:hover,
+#tray:hover,
+#mode:hover,
+#idle_inhibitor:hover,
+#scratchpad:hover,
+#power-profiles-daemon:hover,
+#language:hover,
+#mpd:hover {
+    background: @light_black;
+}
+
+#workspaces {
+    margin: 2px 0px;
+    /* border: 2px solid @gray; */
+    border-radius: 14px;
+    border: none;
+    background: @light_black;
+}
+
+#workspaces button {
+    padding: 0px 6px;
+    /* margin: 0px 6px; */
+    border: none;
+    color: @white;
+    border-radius: 14px;
+}
+
+#workspaces button.active {
+    background: @white;
+    color: @black;
+}
+
+#workspaces button.urgent {
+    color: @red;
+}
+
+#workspaces button.empty:not(.active) {
+    color: @gray;
+}
+
+#workspaces button.empty:not(.active):hover {
+    color: @light_black;
+}
+
+#workspaces button:not(.active):hover {
+    background: @gray;
+    border: 0px;
+}
+
+#window {
+  font-style: italic;
+  color: @light_gray;
+}
+
+
+#custom-arch {
+    /* padding: 20px 0px; */
+    background-repeat: no-repeat;
+    padding-left: 12px;
+    padding-right: 10px;
+    margin: -2px 0px;
+    font-size: 25px;
+    color: @red;
+    transition: color 0.8s ease, text-shadow 0.8s ease, transform 0.8s ease;
+}
+
+#custom-arch:hover {
+    color: @red;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+    text-shadow: 0 0 4px @red;
+}
+
+#pulseaudio {
+   padding-right: 2px;
+}
+
+#pulseaudio-slider {
+    padding: 0px;
+    margin: 2px;
+}
+#pulseaudio-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+#pulseaudio-slider trough {
+    min-height: 7px;
+    min-width: 70px;
+    border-radius: 6px;
+    border: none;
+    background-color: #2a2a2a;
+}
+#pulseaudio-slider highlight {
+    /* min-height: 12px; */
+    min-width: 10px;
+    border-radius: 6px;
+    border: none;
+    background-color: @white; 
+}
+
+#battery.critical.discharging {
+    color: @red;
+}
+
+#idle_inhibitor {
+    font-size: 18px;
+}
+
+#idle_inhibitor.deactivated {
+    background: @light_black;
+    color: @light_gray;
+}
+
+#idle_inhibitor.activated {
+    background: @cyan;
+    color: @black;
+}

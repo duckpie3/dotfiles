@@ -1,10 +1,134 @@
-#!/bin/sh
+#!/bin/bash
 
-if [ -z $2 ]; then
-	# Use -cover option as default
-	echo "hsetroot -cover $(readlink -f ${1})" > ~/.restore_bg
+WALLPAPER="$1"
+MONITOR="$2"
+CONFIG_DIR="$HOME/.config/hypr"
+CONFIG_FILE="$CONFIG_DIR/hyprpaper.conf"
+
+# Check argument
+[ -z "$WALLPAPER" ] || [ -z "$MONITOR" ] && {
+  echo "Usage: $0 /path/to/wallpaper monitor"
+  exit 1
+}
+
+# Resolve to absolute path
+WALLPAPER_PATH="$(realpath "$WALLPAPER" 2>/dev/null)"
+[ -z "$WALLPAPER_PATH" ] && {
+  echo "Error: Unable to resolve wallpaper path: $WALLPAPER"
+  exit 1
+}
+
+# Apply wallpaper to selected monitor
+hyprctl hyprpaper wallpaper "$MONITOR,$WALLPAPER_PATH"
+
+# Create config directory if needed
+mkdir -p "$CONFIG_DIR"
+
+TMP_FILE="$(mktemp)"
+MARKER_FILE="$(mktemp)"
+
+if [ -f "$CONFIG_FILE" ]; then
+  awk -v mon="$MONITOR" -v path="$WALLPAPER_PATH" -v marker_file="$MARKER_FILE" '
+function trim(s) {
+    sub(/^[[:space:]]+/, "", s)
+    sub(/[[:space:]]+$/, "", s)
+    return s
+}
+function flush_block(    i, monitor_value, is_target, has_path, indent) {
+    is_target = 0
+    has_path = 0
+    indent = "    "
+
+    for (i = 1; i <= block_count; i++) {
+        if (block[i] ~ /^[[:space:]]*monitor[[:space:]]*=/) {
+            monitor_value = block[i]
+            sub(/^[[:space:]]*monitor[[:space:]]*=[[:space:]]*/, "", monitor_value)
+            sub(/[[:space:]]*#.*/, "", monitor_value)
+            monitor_value = trim(monitor_value)
+            if (monitor_value == mon) {
+                is_target = 1
+                found = 1
+            }
+        }
+    }
+
+    if (is_target) {
+        for (i = 1; i <= block_count; i++) {
+            if (block[i] ~ /^[[:space:]]*path[[:space:]]*=/) {
+                has_path = 1
+                match(block[i], /^[[:space:]]*/)
+                indent = substr(block[i], 1, RLENGTH)
+                block[i] = indent "path = " path
+                break
+            }
+        }
+
+        if (!has_path) {
+            match(block[block_count], /^[[:space:]]*/)
+            indent = substr(block[block_count], 1, RLENGTH) "    "
+            block[block_count + 1] = block[block_count]
+            block[block_count] = indent "path = " path
+            block_count++
+        }
+    }
+
+    for (i = 1; i <= block_count; i++) {
+        print block[i]
+    }
+
+    delete block
+    block_count = 0
+    in_wallpaper = 0
+}
+BEGIN {
+    found = 0
+    in_wallpaper = 0
+    block_count = 0
+}
+{
+    if (!in_wallpaper) {
+        if ($0 ~ /^[[:space:]]*wallpaper[[:space:]]*\{/) {
+            in_wallpaper = 1
+            block_count = 1
+            block[block_count] = $0
+            next
+        }
+        print
+        next
+    }
+
+    block_count++
+    block[block_count] = $0
+
+    if ($0 ~ /^[[:space:]]*}/) {
+        flush_block()
+    }
+}
+END {
+    if (in_wallpaper && block_count > 0) {
+        flush_block()
+    }
+    print found > marker_file
+}
+  ' "$CONFIG_FILE" > "$TMP_FILE"
 else
-	echo "hsetroot ${1} $(readlink -f ${2})" > ~/.restore_bg
+  : > "$TMP_FILE"
+  echo 0 > "$MARKER_FILE"
 fi
-chmod +x ~/.restore_bg
-~/.restore_bg
+
+if [ "$(cat "$MARKER_FILE")" = "0" ]; then
+  [ -s "$TMP_FILE" ] && printf "\n" >> "$TMP_FILE"
+  cat >> "$TMP_FILE" <<EOF
+wallpaper {
+    monitor = $MONITOR
+    path = $WALLPAPER_PATH
+    fit_mode = cover
+}
+EOF
+fi
+
+mv "$TMP_FILE" "$CONFIG_FILE"
+rm -f "$MARKER_FILE"
+
+echo "Written hyprpaper config:"
+echo "  $CONFIG_FILE"
