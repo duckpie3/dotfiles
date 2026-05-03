@@ -1,15 +1,16 @@
 [font]
-size = 11.0
+size = 12.0
 
 [font.normal]
 family = "VictorMono Nerd Font"
 
-[window.padding]
-x = 4
-y = 0
-
 [window]
 dynamic_padding = true
+opacity = 0.8
+
+[window.padding]
+x = 8
+y = 0
 
 [cursor]
 style = { shape = "Underline", blinking = "On" }
@@ -20,46 +21,7 @@ unfocused_hollow = false
 [env]
 TERM="xterm-256color"
 
-# Colors (Kanagawa Dragon)
-# Source https//github.com/rebelot/kanagawa.nvim
-[colors.primary]
-# background = '#11111'
-background = '#141313'
-# background = '#151413'
-# background = "#161719"
-foreground = '#cdc9c3'
-# foreground = '#c5c9c5'
-
-[colors.normal]
-black = '#0d0c0c'
-blue = '#8ca8b6'
-cyan = '#8ea4a2'
-green = '#8a9a7b'
-magenta = '#a292a3'
-red = '#c4746e'
-white = '#cdc9c3'
-yellow = '#d0bc8d'
-# yellow = '#c4b28a'
-
-[colors.bright]
-black = '#676260'
-# black = '#a6a69c'
-blue = '#7FB4CA'
-cyan = '#7AA89F'
-green = '#87a987'
-magenta = '#938AA9'
-red = '#E46876'
-white = '#c5c9c5'
-yellow = '#E6C384'
-
-# [colors.selection]
-# background = '#2d4f67'
-# foreground = '#c8c093'
-
-[[colors.indexed_colors]]
-index = 16
-color = '#ffa066'
-
-[[colors.indexed_colors]]
-index = 17
-color = '#ff5d62'
+[general]
+import = [
+  "~/.config/alacritty/colorscheme.toml"
+]

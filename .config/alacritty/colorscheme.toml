@@ -1,26 +1,21 @@
-[colors]
-
 [colors.primary]
-background = "#0f0f0f"  # base00
-foreground = "#d8d8d8"  # base05
+background = '#141313'
+foreground = '#cdc9c3'
 
 [colors.normal]
-black   = "#0f0f0f"  # base00
-red     = "#b18f91"  # base08
-green   = "#8aac8b"  # base0B
-yellow  = "#b1ae8f"  # base0A
-blue    = "#a5a0c2"  # base0D
-magenta = "#ac8aac"  # base0E
-cyan    = "#91b2b3"  # base0C
-white   = "#d8d8d8"  # base05
+black = '#0d0c0c'
+blue = '#8ca8b6'
+cyan = '#8ea4a2'
+green = '#8a9a7b'
+magenta = '#a292a3'
+red = '#c4746e'
+white = '#cdc9c3'
+yellow = '#d0bc8d'
 
-[colors.bright]
-black   = "#222222"  # base03
-red     = "#b18f91"  # base08
-green   = "#8aac8b"  # base0B
-yellow  = "#b1ae8f"  # base0A
-blue    = "#a5a0c2"  # base0D
-magenta = "#ac8aac"  # base0E
-cyan    = "#91b2b3"  # base0C
-white   = "#f0f0f0"  # base07
+[[colors.indexed_colors]]
+index = 16
+color = '#ffa066'
 
+[[colors.indexed_colors]]
+index = 17
+color = '#ff5d62'
