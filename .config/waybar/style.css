@@ -1,8 +1,9 @@
 @import "colors.css";
 
 * {
-    /* `otf-font-awesome` and SpaceMono Nerd Font are required to be installed for icons */
+    /* a nerd font is required to be installed for icons */
     font-family: VictorMono Nerd Font Propo;
+    /* font-family: Maple Mono NF CN; */
     font-size: 15px;
     text-shadow: none;
     box-shadow: none;
@@ -13,8 +14,10 @@
 window#waybar {
     background: @black;
     color: @white;
-    border: 1px solid @gray;
+    border: 2px solid @light_black;
     border-radius: 12px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
     transition: background-color 0.5s;
 }
 
@@ -89,14 +92,19 @@ tooltip label {
 }
 
 #workspaces {
-    border: 1px solid @gray;
-    border-radius: 12px;
+    margin: 2px 0px;
+    /* border: 2px solid @gray; */
+    border-radius: 14px;
+    border: none;
+    background: @light_black;
 }
 
 #workspaces button {
+    padding: 0px 6px;
+    /* margin: 0px 6px; */
     border: none;
     color: @white;
-    border-radius: 12px;
+    border-radius: 14px;
 }
 
 #workspaces button.active {
@@ -112,23 +120,40 @@ tooltip label {
     color: @gray;
 }
 
+#workspaces button.empty:not(.active):hover {
+    color: @light_black;
+}
+
 #workspaces button:not(.active):hover {
-    background: @light_black;
+    background: @gray;
     border: 0px;
+}
+
+#window {
+  font-style: italic;
+  color: @light_gray;
 }
 
 
 #custom-arch {
     /* padding: 20px 0px; */
+    background-repeat: no-repeat;
     padding-left: 12px;
     padding-right: 10px;
     margin: -2px 0px;
     font-size: 25px;
     color: @red;
-    transition: color 0.5s;
+    transition: color 0.8s ease, text-shadow 0.8s ease, transform 0.8s ease;
 }
+
 #custom-arch:hover {
-    color: @blue;
+    color: @red;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+    text-shadow: 0 0 4px @red;
+}
+
+#pulseaudio {
+   padding-right: 2px;
 }
 
 #pulseaudio-slider {
@@ -144,18 +169,18 @@ tooltip label {
     box-shadow: none;
 }
 #pulseaudio-slider trough {
-    min-height: 8px;
+    min-height: 7px;
     min-width: 70px;
     border-radius: 6px;
     border: none;
-    background-color: @light_black;
+    background-color: #2a2a2a;
 }
 #pulseaudio-slider highlight {
     /* min-height: 12px; */
     min-width: 10px;
     border-radius: 6px;
     border: none;
-    background-color: @white;
+    background-color: @white; 
 }
 
 #battery.critical.discharging {

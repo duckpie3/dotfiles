@@ -6,12 +6,19 @@
   // "width": 1280, // Waybar width
   "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
-  "margin-left" : 8,
-  "margin-right": 8,
-  "margin-top": 0,
-  "margin-bottom": 8,
-  "modules-left": ["custom/arch", "hyprland/workspaces", "idle_inhibitor"],
-  "modules-center": ["mpris"],
+  // "margin-left": 8,
+  // "margin-right": 8,
+  // "margin-top": 0,
+  // "margin-bottom": 8,
+  "modules-left": [
+    "custom/arch",
+    "hyprland/workspaces",
+    "hyprland/window"
+    // "idle_inhibitor"
+  ],
+  "modules-center": [
+    "clock",
+  ],
   "modules-right": [
     //"idle_inhibitor",
     "pulseaudio",
@@ -22,9 +29,10 @@
     "temperature",
     "hyprland/language",
     "battery",
-    "clock",
   ],
   //Modules configuration
   // "reload_style_on_change": true,
-  "include": ["~/.config/waybar/modules.json"],
+  "include": [
+    "~/.config/waybar/modules.json"
+  ],
 }

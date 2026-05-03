@@ -4,28 +4,23 @@
     "tooltip": true,
     "tooltip-format": "btw"
   },
-
   "hyprland/workspaces": {
     "persistent-workspaces": {
-      "*": 5
+      "*": [1, 2, 3, 4, 5]
     },
     "disable-scroll": true,
-    "all-outputs": true,
+    "all-outputs": false,
     "warp-on-scroll": false,
     "format": "{icon}",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-    },
+      "default": "",
+      "empty": "",
+      "urgent": ""
+    }
   },
-
   "hyprland/window": {
-    "format": "{initialTitle}"
+    "format": " {initialTitle}"
   },
-
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
@@ -47,7 +42,11 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": [
+        "",
+        "",
+        ""
+      ]
     },
     "tooltip-format": "{volume}%",
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
@@ -89,10 +88,16 @@
     "format-charging": "<span foreground='#d0bc8d'></span> {capacity}%",
     "format-plugged": " {capacity}%",
     "format-alt": "{time} {icon}",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
   "clock": {
-    "format": " {:%H:%M |%e %B}",
+    "format": " {:%H:%M 󰸗%e %B}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": " {:%H:%M}"
   },
@@ -102,19 +107,22 @@
     "orientation": "horizontal"
   },
   "mpris": {
-  "dynamic-order": ["title", "artist", "album"],
-	"format": "{player_icon} {status_icon} {dynamic}",
-	"format-paused": "{player_icon} {status_icon} {dynamic}",
-  "dynamic-len": 32,
-	"player-icons": {
-		"default": "",
-    "spotify": "",
-    "firefox": "󰈹"
-	},
-	"status-icons": {
-		"playing": "",
-    "paused": ""
-  },
-	// "ignored-players": ["firefox"]
+    "dynamic-order": [
+      "title",
+      "artist",
+      "album"
+    ],
+    "format": "{player_icon} {status_icon} {dynamic}",
+    "format-paused": "{player_icon} {status_icon} {dynamic}",
+    "dynamic-len": 32,
+    "player-icons": {
+      "default": "",
+      "spotify": "",
+      "firefox": "󰈹"
+    },
+    "status-icons": {
+      "playing": "",
+      "paused": ""
+    }
   }
 }
