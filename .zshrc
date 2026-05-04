@@ -52,12 +52,12 @@ prompt_venv() {
   [[ -n "$env" ]] && printf '%%F{magenta}(%s)%%f' "$env"
 }
 
-PROMPT=$'%F{8}%D{%H:%M}%f %F{cyan} %n%f %F{magenta} %m%f %F{yellow}  %~%f $(prompt_venv) $(prompt_git)
+PROMPT=$'%F{8}%D{%H:%M}%f %F{blue} %n%f %F{red} %m%f %F{yellow}  %~%f $(prompt_venv) $(prompt_git)
 %(?.%F{green}❯%f.%F{red}❯%f) '
 
 export PATH="$HOME/.local/bin:$PATH"
-export EDITOR=helix
-export VISUAL=helix
+export EDITOR=nvim
+export VISUAL=nvim
 
 # Output cloloring
 alias diff='diff --color=auto'
@@ -70,9 +70,6 @@ export LESS='-R --use-color -Dd+r$Du+b'
 # Useful aliases
 alias hx="helix"
 
-# enie
-alias enie='printf ñ | xclip -selection clipboard -i && echo "enie copiada al portapapeles"'
-
 # Syntax highlightning
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Autosuggestions
@@ -81,9 +78,3 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 eval "$(zoxide init zsh)"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/david/google-cloud-sdk/path.zsh.inc' ]; then . '/home/david/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/david/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/david/google-cloud-sdk/completion.zsh.inc'; fi
