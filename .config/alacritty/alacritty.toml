@@ -2,11 +2,11 @@
 size = 12.0
 
 [font.normal]
-family = "VictorMono Nerd Font"
+family = "Terminess Nerd Font"
 
 [window]
 dynamic_padding = true
-opacity = 0.8
+opacity = 1.0
 
 [window.padding]
 x = 8
@@ -25,3 +25,4 @@ TERM="xterm-256color"
 import = [
   "~/.config/alacritty/colorscheme.toml"
 ]
+
