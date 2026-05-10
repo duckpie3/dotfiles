@@ -1,118 +1,195 @@
 * {
-  font:   "JetBrainsMono Nerd Font 12";
+    font:             "JetBrainsMono Nerd Font 11";
 
-  bg0     : #282a2e;
-  bg1     : #161719;
-  bg2     : #24283b;
-  bg3     : #4d5057;
-  fg0     : #C5C8C6;
-  fg1     : #b294bb;
-  fg2     : #373b41;
-  red     : #cc6666;
-  green   : #b5bd68;
-  yellow  : #f0c674;
-  blue    : #81a2be;
-  magenta : #b294bb;
-  cyan    : #70c0ba;
+    /* core palette */
+    bg:               #14171A;
+    bg-alt:           #101316;
+    bg-soft:          #1A1E22;
+    bg-selected:      #232930;
+    fg:               #D4D7DA;
+    fg-soft:          #A0A7AD;
+    fg-fade:          #6A7178;
+    border:           #2A3037;
+    blue:             #6E8494;
+    cyan:             #7C9496;
+    purple:           #8E88A0;
+    green:            #7A9086;
+    red:              #A06A6A;
+    yellow:           #9A8C74;
+    accent:           #B8B2A8;
 
-  accent: @fg1;
-  urgent: @red;
-
-  background-color : transparent;
-  text-color       : @fg0;
+    background-color: transparent;
+    text-color:       @fg;
 }
 
-element-icon, element-text, scrollbar {
-  cursor: pointer;
-}
-
+/* ── Window ─────────────────────────────────────────── */
 window {
-  location : center;
-  width    : 375px;
-
-  background-color: @bg1;
-  border: 0px;
-  border-color: @bg3;
-  border-radius: 14;
+    transparency:     "real";
+    location:         center;
+    anchor:           center;
+    width:            600px;
+    border-radius:    10px;
+    border:           1px;
+    border-color:     @border;
+    background-color: @bg;
+    padding:          0px;
+    shadow:           true;
+    shadow-color:     #0A0C0ECC;
+    shadow-radius:    24;
+    shadow-offset-x:  0;
+    shadow-offset-y:  8;
 }
 
-entry {
-  placeholder : "Search app";
-  placeholder-color : @bg3;
+/* ── Main box ───────────────────────────────────────── */
+mainbox {
+    background-color: transparent;
+    children:         [ inputbar, message, listview, mode-switcher ];
+    spacing:          0px;
+    padding:          0px;
+}
+
+/* ── Input bar ──────────────────────────────────────── */
+inputbar {
+    background-color: @bg-alt;
+    border-radius:    10px 10px 0px 0px;
+    border:           0px 0px 1px 0px;
+    border-color:     @border;
+    padding:          14px 18px;
+    spacing:          10px;
+    children:         [ prompt, textbox-prompt-colon, entry ];
 }
 
 prompt {
-  content : ">";
-  text-color : @red;
+    background-color: transparent;
+    text-color:       @cyan;
+    font:             "JetBrainsMono Nerd Font Bold 11";
 }
 
-inputbar {
-  spacing  : 8px;
-  padding  : 8px;
-  border-radius : 14;
-  children : [ prompt, entry ];
-  background-color: @bg0;
+textbox-prompt-colon {
+    background-color: transparent;
+    text-color:       @fg-fade;
+    str:              "//";
+    expand:           false;
+    margin:           0px 2px 0px 0px;
 }
 
-icon-search, element-icon, element-text {
-  vertical-align: 0.5;
-  text-color : @fg0; 
+entry {
+    background-color:  transparent;
+    text-color:        @fg;
+    placeholder:       "search...";
+    placeholder-color: @fg-fade;
+    cursor:            text;
 }
 
-icon-search {
-  expand   : false;
-  filename : "search-symbolic";
-  size     : 14px;
+/* ── Message (errors / hints) ───────────────────────── */
+message {
+    background-color: @bg-soft;
+    border:           0px 0px 1px 0px;
+    border-color:     @border;
+    padding:          8px 18px;
 }
 
 textbox {
-  padding : 8px;
-  blink : true;
+    background-color: transparent;
+    text-color:       @yellow;
+    font:             "JetBrainsMono Nerd Font Medium 10";
 }
 
+/* ── List view ──────────────────────────────────────── */
 listview {
-  padding      : 8px;
-  lines        : 8;
-  columns      : 1;
-  scrollbar    : true;
-  fixed-height : true;
-  dynamic      : true;
+    background-color: transparent;
+    padding:          8px 0px;
+    spacing:          0px;
+    lines:            8;
+    columns:          1;
+    scrollbar:        true;
+    fixed-height:     true;
+    dynamic:          false;
+    border:           0px;
 }
 
-element {
-  padding : 6px;
-  spacing : 8px;
-}
-
-element normal urgent {
-  text-color: @urgent;
-}
-
-element normal active {
-  text-color: @accent;
-}
-
-element selected {
-  text-color       : @fg0;
-  background-color : @fg2;
-  border-radius : 12;
-}
-
-element selected urgent {
-  background-color: @urgent;
-}
-
-element-icon {
-  size: 0.8em;
-}
-
-element text {
-  text-color: inherit;
-}
-
+/* ── Scrollbar ──────────────────────────────────────── */
 scrollbar {
-  handle-width : 4px;
-  handle-color : @fg2;
-  padding      : 0 4px;
+    background-color: @bg-alt;
+    handle-color:     @border;
+    handle-width:     3px;
+    border-radius:    2px;
+    width:            4px;
+    margin:           4px 6px 4px 0px;
 }
 
+/* ── List elements ──────────────────────────────────── */
+element {
+    background-color: transparent;
+    text-color:       @fg-soft;
+    padding:          9px 18px;
+    border-radius:    0px;
+    orientation:      horizontal;
+    spacing:          10px;
+    cursor:           pointer;
+}
+
+element selected.normal {
+    background-color: @bg-selected;
+    text-color:       @accent;
+    border:           0px 0px 0px 2px;
+    border-color:     @red;
+    border-radius:    0px 4px 4px 0px;
+}
+
+element selected.urgent {
+    background-color: @bg-selected;
+    text-color:       @red;
+    border:           0px 0px 0px 2px;
+    border-color:     @red;
+}
+
+element selected.active {
+    background-color: @bg-selected;
+    text-color:       @green;
+    border:           0px 0px 0px 2px;
+    border-color:     @green;
+}
+
+element.urgent { text-color: @red;   }
+element.active { text-color: @green; }
+
+/* ── Element icon ───────────────────────────────────── */
+element-icon {
+    background-color: transparent;
+    size:             22px;
+    cursor:           inherit;
+}
+
+/* ── Element text ───────────────────────────────────── */
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    cursor:           inherit;
+    vertical-align:   0.5;
+}
+
+/* ── Mode switcher ──────────────────────────────────── */
+mode-switcher {
+    background-color: @bg-alt;
+    border:           1px 0px 0px 0px;
+    border-color:     @border;
+    border-radius:    0px 0px 10px 10px;
+    padding:          8px 12px;
+    spacing:          6px;
+}
+
+button {
+    background-color: transparent;
+    text-color:       @fg-fade;
+    border-radius:    6px;
+    padding:          5px 14px;
+    cursor:           pointer;
+}
+
+button selected {
+    background-color: @bg-soft;
+    text-color:       @cyan;
+    border:           1px;
+    border-color:     @border;
+}
