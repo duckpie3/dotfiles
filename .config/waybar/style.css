@@ -3,7 +3,6 @@
 * {
     /* a nerd font is required to be installed for icons */
     font-family: VictorMono Nerd Font Propo;
-    /* font-family: Maple Mono NF CN; */
     font-size: 15px;
     text-shadow: none;
     box-shadow: none;
@@ -14,7 +13,7 @@
 window#waybar {
     background: @black;
     color: @white;
-    border: 2px solid @light_black;
+    border: 1px solid @light_black;
     border-radius: 12px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
