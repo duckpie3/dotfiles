@@ -1,0 +1,195 @@
+* {
+    font:             "JetBrainsMono Nerd Font 11";
+
+    /* core palette */
+    bg:               #14171A;
+    bg-alt:           #101316;
+    bg-soft:          #1A1E22;
+    bg-selected:      #232930;
+    fg:               #D4D7DA;
+    fg-soft:          #A0A7AD;
+    fg-fade:          #6A7178;
+    border:           #2A3037;
+    blue:             #6E8494;
+    cyan:             #7C9496;
+    purple:           #8E88A0;
+    green:            #7A9086;
+    red:              #A06A6A;
+    yellow:           #9A8C74;
+    accent:           #B8B2A8;
+
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+/* ── Window ─────────────────────────────────────────── */
+window {
+    transparency:     "real";
+    location:         center;
+    anchor:           center;
+    width:            500px;
+    border-radius:    10px;
+    border:           1px;
+    border-color:     @border;
+    background-color: @bg;
+    padding:          0px;
+    shadow:           true;
+    shadow-color:     #0A0C0ECC;
+    shadow-radius:    24;
+    shadow-offset-x:  0;
+    shadow-offset-y:  8;
+}
+
+/* ── Main box ───────────────────────────────────────── */
+mainbox {
+    background-color: transparent;
+    children:         [ inputbar, message, listview, mode-switcher ];
+    spacing:          0px;
+    padding:          0px;
+}
+
+/* ── Input bar ──────────────────────────────────────── */
+inputbar {
+    background-color: @bg-alt;
+    border-radius:    10px 10px 0px 0px;
+    border:           0px 0px 1px 0px;
+    border-color:     @border;
+    padding:          14px 18px;
+    spacing:          10px;
+    children:         [ prompt, textbox-prompt-colon, entry ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @cyan;
+    font:             "JetBrainsMono Nerd Font Bold 11";
+}
+
+textbox-prompt-colon {
+    background-color: transparent;
+    text-color:       @fg-fade;
+    str:              "//";
+    expand:           false;
+    margin:           0px 2px 0px 0px;
+}
+
+entry {
+    background-color:  transparent;
+    text-color:        @fg;
+    placeholder:       "search...";
+    placeholder-color: @fg-fade;
+    cursor:            text;
+}
+
+/* ── Message (errors / hints) ───────────────────────── */
+message {
+    background-color: @bg-soft;
+    border:           0px 0px 1px 0px;
+    border-color:     @border;
+    padding:          8px 18px;
+}
+
+textbox {
+    background-color: transparent;
+    text-color:       @yellow;
+    font:             "JetBrainsMono Nerd Font Medium 10";
+}
+
+/* ── List view ──────────────────────────────────────── */
+listview {
+    background-color: transparent;
+    padding:          8px 0px;
+    spacing:          0px;
+    lines:            8;
+    columns:          1;
+    scrollbar:        true;
+    fixed-height:     true;
+    dynamic:          false;
+    border:           0px;
+}
+
+/* ── Scrollbar ──────────────────────────────────────── */
+scrollbar {
+    background-color: @bg-alt;
+    handle-color:     @border;
+    handle-width:     3px;
+    border-radius:    2px;
+    width:            4px;
+    margin:           4px 6px 4px 0px;
+}
+
+/* ── List elements ──────────────────────────────────── */
+element {
+    background-color: transparent;
+    text-color:       @fg-soft;
+    padding:          9px 18px;
+    border-radius:    0px;
+    orientation:      horizontal;
+    spacing:          10px;
+    cursor:           pointer;
+}
+
+element selected.normal {
+    background-color: @bg-selected;
+    text-color:       @accent;
+    border:           0px 0px 0px 2px;
+    border-color:     @red;
+    border-radius:    0px 4px 4px 0px;
+}
+
+element selected.urgent {
+    background-color: @bg-selected;
+    text-color:       @red;
+    border:           0px 0px 0px 2px;
+    border-color:     @red;
+}
+
+element selected.active {
+    background-color: @bg-selected;
+    text-color:       @green;
+    border:           0px 0px 0px 2px;
+    border-color:     @green;
+}
+
+element.urgent { text-color: @red;   }
+element.active { text-color: @green; }
+
+/* ── Element icon ───────────────────────────────────── */
+element-icon {
+    background-color: transparent;
+    size:             22px;
+    cursor:           inherit;
+}
+
+/* ── Element text ───────────────────────────────────── */
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    cursor:           inherit;
+    vertical-align:   0.5;
+}
+
+/* ── Mode switcher ──────────────────────────────────── */
+mode-switcher {
+    background-color: @bg-alt;
+    border:           1px 0px 0px 0px;
+    border-color:     @border;
+    border-radius:    0px 0px 10px 10px;
+    padding:          8px 12px;
+    spacing:          6px;
+}
+
+button {
+    background-color: transparent;
+    text-color:       @fg-fade;
+    border-radius:    6px;
+    padding:          5px 14px;
+    cursor:           pointer;
+}
+
+button selected {
+    background-color: @bg-soft;
+    text-color:       @cyan;
+    border:           1px;
+    border-color:     @border;
+}

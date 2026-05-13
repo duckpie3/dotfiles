@@ -1,0 +1,161 @@
+/* =====================================================
+ * Power Menu
+ * ===================================================== */
+
+* {
+    font:             "JetBrainsMono Nerd Font 11";
+
+    /* core palette */
+    bg:               #14171A;
+    bg-alt:           #101316;
+    bg-soft:          #1A1E22;
+    bg-selected:      #232930;
+    fg:               #D4D7DA;
+    fg-soft:          #A0A7AD;
+    fg-fade:          #6A7178;
+    border:           #2A3037;
+    blue:             #6E8494;
+    cyan:             #7C9496;
+    purple:           #8E88A0;
+    green:            #7A9086;
+    red:              #A06A6A;
+    yellow:           #9A8C74;
+    accent:           #B8B2A8;
+
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+/* ── Window ─────────────────────────────────────────── */
+window {
+    transparency:     "real";
+    location:         center;
+    anchor:           center;
+    width:            420px;
+    border-radius:    10px;
+    border:           1px;
+    border-color:     @border;
+    background-color: @bg;
+    padding:          0px;
+    shadow:           true;
+    shadow-color:     #0A0C0ECC;
+    shadow-radius:    24;
+    shadow-offset-x:  0;
+    shadow-offset-y:  8;
+}
+
+/* ── Main box ───────────────────────────────────────── */
+mainbox {
+    background-color: transparent;
+    children:         [ inputbar, listview, message ];
+    spacing:          0px;
+    padding:          0px;
+}
+
+/* ── Header (repurposed inputbar) ───────────────────── */
+inputbar {
+    background-color: @bg-alt;
+    border-radius:    10px 10px 0px 0px;
+    border:           0px 0px 1px 0px;
+    border-color:     @border;
+    padding:          14px 20px;
+    children:         [ prompt ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @red;
+    font:             "JetBrainsMono Nerd Font Bold 11";
+    horizontal-align: 0.5;
+}
+
+/* hide entry / colon — not needed */
+entry {
+    background-color: transparent;
+    text-color:       transparent;
+    placeholder:      "";
+    placeholder-color: transparent;
+    blink:            false;
+    width:            0px;
+    padding:          0px;
+}
+
+/* ── List view — grid layout ────────────────────────── */
+listview {
+    background-color: @bg;
+    padding:          20px 16px;
+    spacing:          10px;
+    lines:            2;
+    columns:          3;
+    cycle:            true;
+    dynamic:          false;
+    scrollbar:        false;
+    fixed-height:     true;
+    border:           0px;
+}
+
+/* ── Elements ───────────────────────────────────────── */
+element {
+    background-color: @bg-soft;
+    text-color:       @fg-fade;
+    border-radius:    6px;
+    border:           1px;
+    border-color:     @border;
+    orientation:      vertical;
+    padding:          14px 10px 14px 10px;
+    spacing:          10px;
+    cursor:           pointer;
+}
+
+element selected.normal {
+    background-color: @bg-selected;
+    text-color:       @accent;
+    border:           1px;
+    border-color:     @cyan;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    text-color: @red;
+    border-color: @red;
+}
+
+element selected.urgent {
+    background-color: @bg-selected;
+    text-color:       @red;
+    border:           1px;
+    border-color:     @red;
+}
+
+/* ── Icon (large, centered) ─────────────────────────── */
+element-icon {
+    background-color: transparent;
+    size:             36px;
+    horizontal-align: 0.5;
+    cursor:           inherit;
+}
+
+/* ── Label ──────────────────────────────────────────── */
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    font:             "JetBrainsMono Nerd Font Medium 11";
+    horizontal-align: 0.5;
+    cursor:           inherit;
+}
+
+/* ── Footer message ─────────────────────────────────── */
+message {
+    background-color: @bg-alt;
+    border:           1px 0px 0px 0px;
+    border-color:     @border;
+    border-radius:    0px 0px 10px 10px;
+    padding:          8px 20px;
+}
+
+textbox {
+    background-color: transparent;
+    text-color:       @fg-fade;
+    font:             "JetBrainsMono Nerd Font Medium 9";
+    horizontal-align: 0.5;
+}
