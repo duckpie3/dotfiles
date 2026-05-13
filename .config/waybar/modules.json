@@ -2,7 +2,17 @@
   "custom/arch": {
     "format": "󰣇",
     "tooltip": true,
-    "tooltip-format": "btw"
+    "tooltip-format": "btw",
+    "menu": "on-click",
+    "menu-file": "~/.config/waybar/power_menu.xml",
+    "menu-actions": {
+            "shutdown": "systemctl poweroff",
+            "reboot": "systemctl reboot",
+            "suspend": "systemctl suspend",
+            "hibernate": "systemctl hibernate",
+            "lock": "loginctl lock-session",
+            "logout": "loginctl terminate-session '$XDG_SESSION_ID'"
+    },
   },
   "hyprland/workspaces": {
     "persistent-workspaces": {
@@ -85,7 +95,7 @@
     },
     "format": "{icon} {capacity}%",
     "format-full": "{icon} {capacity}%",
-    "format-charging": "<span foreground='#d0bc8d'></span> {capacity}%",
+    "format-charging": "<span foreground='#9A8C74'></span> {capacity}%",
     "format-plugged": " {capacity}%",
     "format-alt": "{time} {icon}",
     "format-icons": [
@@ -97,7 +107,7 @@
     ]
   },
   "clock": {
-    "format": " {:%H:%M 󰸗%e %B}",
+    "format": " {:%H:%M 󰸗 %e %B}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": " {:%H:%M}"
   },

@@ -11,9 +11,9 @@
 }
 
 window#waybar {
-    background: @black;
-    color: @white;
-    border: 1px solid @light_black;
+    background: @bg;
+    color: @fg;
+    border: 1px solid @border;
     border-radius: 12px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -21,21 +21,22 @@ window#waybar {
 }
 
 tooltip {
-  background: alpha(@black, 0.9);
+  background: alpha(@bg, 0.9);
   border: none;
   border-radius: 12px;
   transition: opacity 0.3s;
 }
 
 tooltip label {
-  color: @white;
+  color: @fg;
+  padding: 0px;
 }
 
 
 .modules-left,
 .modules-center,
 .modules-right {
-    background: @black;
+    background: @bg;
     margin: 4px 4px;
     border-radius: 12px;
 }
@@ -87,7 +88,8 @@ tooltip label {
 #power-profiles-daemon:hover,
 #language:hover,
 #mpd:hover {
-    background: @light_black;
+    background: @bg_soft;
+    color: @accent;
 }
 
 #workspaces {
@@ -95,20 +97,20 @@ tooltip label {
     /* border: 2px solid @gray; */
     border-radius: 14px;
     border: none;
-    background: @light_black;
+    background: @bg_soft;
 }
 
 #workspaces button {
     padding: 0px 6px;
     /* margin: 0px 6px; */
     border: none;
-    color: @white;
+    color: @fg_soft;
     border-radius: 14px;
 }
 
 #workspaces button.active {
-    background: @white;
-    color: @black;
+    background: @fg_soft;
+    color: @bg;
 }
 
 #workspaces button.urgent {
@@ -116,21 +118,21 @@ tooltip label {
 }
 
 #workspaces button.empty:not(.active) {
-    color: @gray;
+    color: @fg_fade;
 }
 
-#workspaces button.empty:not(.active):hover {
-    color: @light_black;
-}
+/* #workspaces button.empty:not(.active):hover { */
+/*     color: @bg_soft; */
+/* } */
 
 #workspaces button:not(.active):hover {
-    background: @gray;
+    background: @bg_selected;
     border: 0px;
 }
 
 #window {
   font-style: italic;
-  color: @light_gray;
+  color: @fg_soft;
 }
 
 
@@ -172,18 +174,19 @@ tooltip label {
     min-width: 70px;
     border-radius: 6px;
     border: none;
-    background-color: #2a2a2a;
+    background-color: @bg_selected;
 }
 #pulseaudio-slider highlight {
     /* min-height: 12px; */
     min-width: 10px;
     border-radius: 6px;
     border: none;
-    background-color: @white; 
+    background-color: @fg; 
 }
 
 #battery.critical.discharging {
-    color: @red;
+    color: #D66D6D;
+    background: #4D3333;
 }
 
 #idle_inhibitor {
@@ -191,11 +194,32 @@ tooltip label {
 }
 
 #idle_inhibitor.deactivated {
-    background: @light_black;
-    color: @light_gray;
+    background: @bg_soft;
+    color: @fg_fade;
 }
 
 #idle_inhibitor.activated {
     background: @cyan;
-    color: @black;
+    color: @bg;
 }
+
+menu {
+    border-radius: 10px;
+    background: @bg;
+    color: @fg_soft;
+    border: 1px solid @border;
+    padding: 8px;
+}
+
+menuitem {
+    border-radius: 8px;
+    border: 1px solid @border;
+    background: @bg_soft;
+    margin: 4px 0px 4px 0px;
+}
+
+menuitem:hover {
+    background: @bg_selected;
+    border: 1px solid @cyan;
+    color: @accent;
+} 
