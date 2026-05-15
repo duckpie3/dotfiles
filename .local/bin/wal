@@ -6,10 +6,20 @@ CONFIG_DIR="$HOME/.config/hypr"
 CONFIG_FILE="$CONFIG_DIR/hyprpaper.conf"
 
 # Check argument
-[ -z "$WALLPAPER" ] || [ -z "$MONITOR" ] && {
-  echo "Usage: $0 /path/to/wallpaper monitor"
+[ -z "$WALLPAPER" ] && {
+  echo "Usage: wal /path/to/wallpaper [monitor]"
   exit 1
 }
+
+# Default to focused monitor if not specified
+if [ -z "$MONITOR" ]; then
+ MONITOR="$(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name')"
+  [ -z "$MONITOR" ] && {
+    echo "Error: Could not detect focused monitor"
+    exit 1
+  }
+  echo "Using focused monitor: $MONITOR"
+fi
 
 # Resolve to absolute path
 WALLPAPER_PATH="$(realpath "$WALLPAPER" 2>/dev/null)"
