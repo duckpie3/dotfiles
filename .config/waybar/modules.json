@@ -95,7 +95,7 @@
     },
     "format": "{icon} {capacity}%",
     "format-full": "{icon} {capacity}%",
-    "format-charging": "<span foreground='#9A8C74'></span> {capacity}%",
+    "format-charging": "<span foreground='#ccb999'></span> {capacity}%",
     "format-plugged": " {capacity}%",
     "format-alt": "{time} {icon}",
     "format-icons": [

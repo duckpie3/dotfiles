@@ -184,9 +184,17 @@ tooltip label {
     background-color: @fg; 
 }
 
+
 #battery.critical.discharging {
     color: #D66D6D;
-    background: #4D3333;
+    background: #3d2929;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#battery.charging {
+    color: @fg;
+    background: #29343d;
+    text-shadow: 0 0 4px @yellow;
 }
 
 #idle_inhibitor {
