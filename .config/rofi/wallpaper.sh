@@ -37,7 +37,8 @@ SELECTED_NAME="$(printf "$ROFI_INPUT" | rofi -dmenu -i \
   -show-icons \
   -theme ~/.config/rofi/themes/wallpaper.rasi \
   -theme-str 'element-icon { size: 8em; }' \
-  -theme-str 'listview { columns: 4; lines: 3; }')"
+  -theme-str 'listview { columns: 4; lines: 3; }' \
+  -mesg "press esc to cancel" )"
 
 [ -z "$SELECTED_NAME" ] && exit 0
 
