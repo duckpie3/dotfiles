@@ -1,0 +1,164 @@
+/* =====================================================
+ * ASTRO // Wallpaper Switcher
+ * ===================================================== */
+
+* {
+    font:             "JetBrainsMono Nerd Font 11";
+
+    /* core palette */
+    bg:               #14171A;
+    bg-alt:           #101316;
+    bg-soft:          #1A1E22;
+    bg-selected:      #232930;
+    fg:               #D4D7DA;
+    fg-soft:          #A0A7AD;
+    fg-fade:          #6A7178;
+    border:           #2A3037;
+    blue:             #6E8494;
+    cyan:             #7C9496;
+    purple:           #8E88A0;
+    green:            #7A9086;
+    red:              #A06A6A;
+    yellow:           #9A8C74;
+    accent:           #B8B2A8;
+
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+/* ── Window ─────────────────────────────────────────── */
+window {
+    transparency:     "real";
+    location:         center;
+    anchor:           center;
+    width:            860px;
+    border-radius:    10px;
+    border:           1px;
+    border-color:     @border;
+    background-color: @bg;
+    padding:          0px;
+    shadow:           true;
+    shadow-color:     #0A0C0ECC;
+    shadow-radius:    24;
+    shadow-offset-x:  0;
+    shadow-offset-y:  8;
+}
+
+/* ── Main box ───────────────────────────────────────── */
+mainbox {
+    background-color: transparent;
+    children:         [ inputbar, listview, message ];
+    spacing:          0px;
+    padding:          0px;
+}
+
+/* ── Input / search bar ─────────────────────────────── */
+inputbar {
+    background-color: @bg-alt;
+    border-radius:    10px 10px 0px 0px;
+    border:           0px 0px 1px 0px;
+    border-color:     @border;
+    padding:          12px 18px;
+    spacing:          8px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @cyan;
+    font:             "JetBrainsMono Nerd Font Bold 11";
+}
+
+entry {
+    background-color:  transparent;
+    text-color:        @fg;
+    placeholder:       "filter...";
+    placeholder-color: @fg-fade;
+    cursor:            text;
+}
+
+/* ── Thumbnail grid ─────────────────────────────────── */
+listview {
+    background-color: @bg;
+    padding:          16px;
+    spacing:          10px;
+    columns:          5;
+    lines:            2;
+    scrollbar:        true;
+    fixed-height:     false;
+    dynamic:          true;
+    border:           0px;
+    flow:             horizontal;
+}
+
+/* ── Scrollbar ──────────────────────────────────────── */
+scrollbar {
+    background-color: @bg-alt;
+    handle-color:     @border;
+    handle-width:     3px;
+    border-radius:    2px;
+    width:            4px;
+    margin:           4px 0px 4px 6px;
+}
+
+/* ── Each wallpaper tile ────────────────────────────── */
+element {
+    background-color: @bg-soft;
+    text-color:       @fg-fade;
+    border-radius:    6px;
+    border:           1px;
+    border-color:     @border;
+    orientation:      vertical;
+    padding:          0px;
+    spacing:          0px;
+    cursor:           pointer;
+}
+
+element selected.normal {
+    background-color: @bg-selected;
+    text-color:       @accent;
+    border:           1px;
+    border-color:     @cyan;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    border-color:     @red;
+    text-color:       @red;
+}
+
+/* ── Thumbnail image ────────────────────────────────── */
+element-icon {
+    background-color: transparent;
+    size:             148px;
+    border-radius:    6px 6px 0px 0px;
+    cursor:           inherit;
+}
+
+/* ── Filename label ─────────────────────────────────── */
+element-text {
+    background-color: @bg-alt;
+    text-color:       inherit;
+    font:             "JetBrainsMono Nerd Font Medium 8";
+    horizontal-align: 0.5;
+    vertical-align:   0.5;
+    border-radius:    0px 0px 5px 5px;
+    padding:          5px 6px;
+    cursor:           inherit;
+}
+
+/* ── Footer: wallpaper count + backend hint ─────────── */
+message {
+    background-color: @bg-alt;
+    border:           1px 0px 0px 0px;
+    border-color:     @border;
+    border-radius:    0px 0px 10px 10px;
+    padding:          7px 18px;
+}
+
+textbox {
+    background-color: transparent;
+    text-color:       @fg-fade;
+    font:             "JetBrainsMono Nerd Font Medium 9";
+    horizontal-align: 0.5;
+}
