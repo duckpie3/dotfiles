@@ -20,9 +20,6 @@ bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 bindkey '^H' backward-kill-word
 
-# Set the prompt
-# PROMPT='%B%F{cyan}%~%b %(?.%F{green}.%F{red}) '
-
 # Enhanced pretty zsh prompt
 setopt PROMPT_SUBST
 autoload -Uz colors && colors
